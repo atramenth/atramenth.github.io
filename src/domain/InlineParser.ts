@@ -5,6 +5,12 @@ export type Token =
   | { kind: "note"; id: number }
   | { kind: "break" };
 
+export type ScriptRun = { text: string; arabic: boolean };
+
+const ARABIC_WORD = "[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDFF\\uFE70-\\uFEFF]+";
+/** A run of Arabic words (spaces between words stay inside the run). */
+const ARABIC_RUN = new RegExp(`${ARABIC_WORD}(?:\\s+${ARABIC_WORD})*`, "g");
+
 export type RefPart = { text: string } | { ref: string; surah: number; ayah: number };
 
 /** Turns marked text into render tokens. Pure and stateless. */
@@ -48,6 +54,20 @@ export class InlineParser {
 
   static noteIds(input: MarkedText): number[] {
     return InlineParser.parse(input).flatMap((t) => (t.kind === "note" ? [t.id] : []));
+  }
+
+  /** Splits text into Latin and Arabic runs so Arabic words can be set right-to-left. */
+  static splitArabic(input: string): ScriptRun[] {
+    const out: ScriptRun[] = [];
+    let last = 0;
+    for (const m of input.matchAll(ARABIC_RUN)) {
+      const at = m.index ?? 0;
+      if (at > last) out.push({ text: input.slice(last, at), arabic: false });
+      out.push({ text: m[0], arabic: true });
+      last = at + m[0].length;
+    }
+    if (last < input.length) out.push({ text: input.slice(last), arabic: false });
+    return out;
   }
 
   /** Splits text into plain runs and Qur'ān references like 2:21 or 36:69-70. */

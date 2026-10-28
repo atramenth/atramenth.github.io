@@ -77,20 +77,30 @@ export interface PartStart {
   ayah: number;
 }
 
-export interface IntroductionData {
-  title: string;
-  sections: { heading: string; paragraphs: MarkedText[] }[];
+export type IntroBlock =
+  /** Centred opening formula at the very top (bold). */
+  | { type: "basmala"; lines: MarkedText[] }
+  | { type: "title"; text: MarkedText }
+  | { type: "heading"; text: MarkedText; italic?: boolean }
+  | { type: "p"; text: MarkedText; continued?: boolean; continues?: boolean }
+  /** Separate printed lines, e.g. a short numbered list. */
+  | { type: "lines"; lines: MarkedText[] }
+  /** The printed ❊ mark between passages (1 or 3 of them). */
+  | { type: "ornament"; count: 1 | 3 };
+
+export interface IntroFootnoteData {
+  id: number;
+  text: MarkedText;
 }
 
-/** The translator’s biography, printed at the end of the book. */
-export interface TranslatorData {
-  /** Page title, drawn from the text: she is all three. */
+/** One printed page of the introduction. Footnote numbers restart on every page. */
+export interface IntroPageData {
+  bookPage: number;
+  blocks: IntroBlock[];
+  footnotes: IntroFootnoteData[];
+}
+
+export interface IntroductionData {
   title: string;
-  name: string;
-  /** The heading the publisher printed above the text. */
-  subtitle: string;
-  /** Plain text; wrap a phrase in **double asterisks** for bold. */
-  paragraphs: string[];
-  signature: string;
-  letter: { alt: string; heading: string; caption: string };
+  pages: IntroPageData[];
 }

@@ -22,7 +22,7 @@ npm run build
 |---|---|
 | Sūrahs (30 parts) | `src/data/surahs/sNNN.ts` — one file per sūrah, picked up automatically |
 | Index | `src/data/catalog.ts` (all 114 names, Makkah/Madīnah, book page, āyah counts) and `src/data/parts.ts` |
-| Introduction | `src/data/introduction.ts` — add `sections` and the page fills in |
+| Introduction | `src/data/introduction.ts` — one entry in `pages` per printed book page (1199–1207), footnotes per page; Arabic words are typed as Arabic and set right-to-left automatically |
 
 ## Adding a sūrah
 Copy `s001.ts`. Each entry in `pages` is one printed book page, so the reader matches the book page for page.
