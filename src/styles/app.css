@@ -304,3 +304,7 @@ a.row:hover { background: var(--surface); }
   .tabbar { max-width: 28rem; left: 50%; right: auto; transform: translateX(-50%); width: 100%; border: 1px solid var(--border); border-bottom: 0; border-radius: 18px 18px 0 0; }
   .sheet { border-radius: 22px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-strong); }
 }
+
+/* Bismillah under a sūrah title, and the "more to come" note on partial sūrahs */
+.bismillah { display: grid; justify-items: start; margin-bottom: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: 1.05em; line-height: 1.4; }
+.partial { margin-top: 2rem; padding-top: 1rem; border-top: 1px dashed var(--border-strong); font-size: 0.8rem; color: var(--text-3); text-align: center; }

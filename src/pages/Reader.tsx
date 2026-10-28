@@ -8,7 +8,7 @@ import type { BookPage, Surah } from "../domain/Surah.ts";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
 
-function PageView({ page, onNote }: { page: BookPage; onNote: (id: number) => void }) {
+function PageView({ page, onNote, unfinished }: { page: BookPage; onNote: (id: number) => void; unfinished: boolean }) {
   return (
     <section className="page" aria-label={`Book page ${page.bookPage}`}>
       <div className="paper">
@@ -30,7 +30,13 @@ function PageView({ page, onNote }: { page: BookPage; onNote: (id: number) => vo
         )}
         <div className="verses">
           {page.blocks.map((b, i) =>
-            b.type === "divider" ? (
+            b.type === "bismillah" ? (
+              <p key={i} className="bismillah">
+                {b.lines.map((l, j) => (
+                  <span key={j}>{l}</span>
+                ))}
+              </p>
+            ) : b.type === "divider" ? (
               <div key={i} className="divider" role="separator" aria-hidden="true">
                 <i /> <i /> <i />
               </div>
@@ -54,6 +60,7 @@ function PageView({ page, onNote }: { page: BookPage; onNote: (id: number) => vo
             ),
           )}
         </div>
+        {unfinished && <p className="partial">The remaining pages of this sūrah haven’t been added yet.</p>}
       </div>
     </section>
   );
@@ -175,8 +182,8 @@ export default function Reader() {
       {surah && (
         <>
           <div className="reader__track" ref={track} onScroll={onScroll} tabIndex={-1}>
-            {surah.pages.map((p) => (
-              <PageView key={p.bookPage} page={p} onNote={setNoteId} />
+            {surah.pages.map((p, i) => (
+              <PageView key={p.bookPage} page={p} onNote={setNoteId} unfinished={surah.partial && i === surah.pages.length - 1} />
             ))}
           </div>
 
