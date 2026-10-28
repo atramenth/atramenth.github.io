@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { TRANSLATOR } from "../data/translator.ts";
 import letter from "../assets/translator/afro-asian-writers-letter.webp";
+import letterEn from "../assets/translator/afro-asian-writers-letter-translation.webp";
 
 /** Renders plain text with **bold** runs. */
 function Rich({ text }: { text: string }) {
@@ -33,10 +34,20 @@ export default function Translator() {
 
       <figure className="letter">
         <h2>{t.letter.heading}</h2>
-        <a className="letter__frame" href={letter} target="_blank" rel="noopener" aria-label="Open the letter full size in a new tab">
-          <img src={letter} alt={t.letter.alt} width={1910} height={2754} loading="lazy" decoding="async" />
-        </a>
-        <figcaption>{t.letter.caption} Tap the image to open it full size.</figcaption>
+        <div className="letter__pair">
+          {[
+            { src: letter, ...t.letter.original, w: 1910, h: 2754 },
+            { src: letterEn, ...t.letter.translation, w: 1951, h: 2747 },
+          ].map((l) => (
+            <div className="letter__item" key={l.src}>
+              <span className="letter__label">{l.label}</span>
+              <a className="letter__frame" href={l.src} target="_blank" rel="noopener" aria-label={`Open ${l.label} full size in a new tab`}>
+                <img src={l.src} alt={l.alt} width={l.w} height={l.h} loading="lazy" decoding="async" />
+              </a>
+            </div>
+          ))}
+        </div>
+        <figcaption>{t.letter.caption} Tap an image to open it full size.</figcaption>
       </figure>
     </main>
   );
