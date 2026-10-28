@@ -81,3 +81,16 @@ export interface IntroductionData {
   title: string;
   sections: { heading: string; paragraphs: MarkedText[] }[];
 }
+
+/** The translator’s biography, printed at the end of the book. */
+export interface TranslatorData {
+  /** Page title, drawn from the text: she is all three. */
+  title: string;
+  name: string;
+  /** The heading the publisher printed above the text. */
+  subtitle: string;
+  /** Plain text; wrap a phrase in **double asterisks** for bold. */
+  paragraphs: string[];
+  signature: string;
+  letter: { alt: string; heading: string; caption: string };
+}

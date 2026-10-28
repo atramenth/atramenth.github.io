@@ -5,6 +5,7 @@ import Home from "./pages/Home.tsx";
 import IndexPage from "./pages/IndexPage.tsx";
 import Introduction from "./pages/Introduction.tsx";
 import Surahs from "./pages/Surahs.tsx";
+import Translator from "./pages/Translator.tsx";
 
 const Reader = lazy(() => import("./pages/Reader.tsx"));
 
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="surahs" element={<Surahs />} />
             <Route path="index" element={<IndexPage />} />
             <Route path="introduction" element={<Introduction />} />
+            <Route path="translator" element={<Translator />} />
             <Route path="surah/:number/:page?" element={<Reader />} />
             <Route path="*" element={<NotFound />} />
           </Route>
