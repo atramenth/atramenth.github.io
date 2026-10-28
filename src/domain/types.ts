@@ -82,7 +82,7 @@ export type IntroBlock =
   | { type: "basmala"; lines: MarkedText[] }
   | { type: "title"; text: MarkedText }
   | { type: "heading"; text: MarkedText; italic?: boolean }
-  | { type: "p"; text: MarkedText; continued?: boolean; continues?: boolean }
+  | { type: "p"; text: MarkedText }
   /** Separate printed lines, e.g. a short numbered list. */
   | { type: "lines"; lines: MarkedText[] }
   /** The printed ❊ mark between passages (1 or 3 of them). */
@@ -93,16 +93,11 @@ export interface IntroFootnoteData {
   text: MarkedText;
 }
 
-/** One printed page of the introduction. Footnote numbers restart on every page. */
-export interface IntroPageData {
-  bookPage: number;
-  blocks: IntroBlock[];
-  footnotes: IntroFootnoteData[];
-}
-
+/** One continuous text (no paper page numbers); footnotes are numbered in reading order. */
 export interface IntroductionData {
   title: string;
-  pages: IntroPageData[];
+  blocks: IntroBlock[];
+  footnotes: IntroFootnoteData[];
 }
 
 /** The translator’s biography, printed at the end of the book. */

@@ -312,23 +312,21 @@ a.row:hover { background: var(--surface); }
 /* Arabic words inside English text, set right-to-left in a Naskh face */
 .ar { font-family: "Amiri", "Noto Naskh Arabic", "Scheherazade New", "Geeza Pro", serif; direction: rtl; unicode-bidi: isolate; font-style: normal; font-size: 1.12em; line-height: 1; }
 
-/* Introduction: printed pages in order, footnotes under each page */
-.intro { max-width: 34rem; }
-.intro__page { padding-bottom: 1.4rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
-.intro__page:last-child { border-bottom: 0; }
-.intro__basmala { display: grid; justify-items: center; text-align: center; margin: 0.4rem 0 1.4rem; font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; line-height: 1.35; }
-.intro__title { font-family: var(--font-display); font-weight: 600; font-size: 2.2rem; line-height: 1.1; text-align: center; margin-bottom: 1.2rem; }
-.intro__heading { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; line-height: 1.2; margin: 1.6rem 0 0.7rem; }
-.intro__heading.is-italic { font-style: italic; margin-top: 0.6rem; }
-.intro__p, .intro__lines { font-family: var(--font-display); font-size: 1.28rem; line-height: 1.65; margin-bottom: 0.9rem; text-wrap: pretty; }
-.intro__p.is-continued { border-left: 2px solid var(--accent); padding-left: 0.8rem; margin-left: -0.9rem; }
-.intro__p.is-continues { border-left: 2px dotted var(--accent); padding-left: 0.8rem; margin-left: -0.9rem; }
-.intro__ornament { text-align: center; color: var(--accent); letter-spacing: 0.35em; margin: 0.4rem 0 1rem; }
-.fn-static { font-family: var(--font-body); font-size: 0.6em; line-height: 0; vertical-align: super; margin-left: 0.08em; color: var(--accent-bright); }
-.intro__notes { list-style: none; margin-top: 1.4rem; padding-top: 0.8rem; border-top: 1px solid var(--border-strong); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.6; color: var(--text-2); }
-.intro__notes li { display: block; }
-.intro__no { margin-top: 1rem; text-align: center; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-3); }
-
+/* Introduction: one continuous, mobile-first text; footnotes open in a sheet like the reader */
+.screen__head--row { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.screen__head--row .icon-btn { flex: none; margin: -0.2rem -0.5rem 0 0; }
+.intro { max-width: 34rem; font-size: calc(1.28rem * var(--read-scale)); }
+.intro__basmala { display: grid; justify-items: center; gap: 0.1em; text-align: center; font-family: var(--font-display); font-weight: 600; font-size: 1.08em; line-height: 1.35; color: var(--text-2); margin: 0.2rem 0 1.4rem; }
+.intro__title { font-family: var(--font-display); font-weight: 600; font-size: 1.9em; line-height: 1.1; text-align: center; margin-bottom: 0.3rem; text-wrap: balance; }
+.intro__rule { display: block; width: 8em; margin: 0.9rem auto 1.6rem; stroke: var(--accent); stroke-width: 1; fill: var(--accent); color: var(--accent); font-size: 1rem; }
+.intro__rule path { fill: none; }
+.intro__heading { font-family: var(--font-display); font-weight: 600; font-size: 1.3em; line-height: 1.2; margin: 2.2rem 0 0.8rem; text-wrap: balance; }
+.intro__heading.is-italic { font-style: italic; font-weight: 500; font-size: 1.5em; margin-top: 0; }
+.intro__p, .intro__lines { font-family: var(--font-display); font-weight: 500; line-height: 1.62; margin-bottom: 1.1rem; text-wrap: pretty; hyphens: manual; overflow-wrap: break-word; }
+.intro__lines { padding-left: 0.9rem; border-left: 2px solid var(--accent); }
+.intro__ornament { text-align: center; color: var(--accent); letter-spacing: 0.4em; margin: 1.4rem 0; }
+.intro .fn { font-size: 0.5em; }
+.intro .ed { font-style: italic; }
 
 /* ---------- Translator ---------- */
 /* Home: her name is the second element under the ring. */
