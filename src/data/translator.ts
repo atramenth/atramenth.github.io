@@ -20,7 +20,14 @@ export const TRANSLATOR: TranslatorData = {
   signature: "Publisher",
   letter: {
     heading: "Afro-Asian Writers Organization",
-    caption: "Letter from the organization’s Cairo office, March 2006, selecting her for honour at its Women’s Day ceremony.",
-    alt: "Scanned letter on the Afro-Asian Writers Organization letterhead, Cairo, 2006, written in Arabic, with an official stamp and signature.",
+    caption: "Letter from the organization’s Central Office in Cairo, March 2006, asking the Iranian ambassador to convey her invitation to be honoured at its World Women’s Day ceremony on 19 March 2006.",
+    original: {
+      label: "Original · Arabic",
+      alt: "Scanned letter on the Afro-Asian Writers Organization letterhead, Cairo, 2006, written in Arabic, with an official stamp and signature.",
+    },
+    translation: {
+      label: "English translation",
+      alt: "English translation of the letter: the Afro-Asian Writers’ Organization, Cairo, 7 March 2006, addressed to the Iranian ambassador and signed by Dr. Mohammad Majdi Marjan.",
+    },
   },
 };

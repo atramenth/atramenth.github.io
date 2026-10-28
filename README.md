@@ -17,12 +17,13 @@ npm run check:data   # validates catalog, parts and every surah file
 npm run build
 ```
 
-## The three parts
+## The parts
 | Part | Where |
 |---|---|
 | Sūrahs (30 parts) | `src/data/surahs/sNNN.ts` — one file per sūrah, picked up automatically |
 | Index | `src/data/catalog.ts` (all 114 names, Makkah/Madīnah, book page, āyah counts) and `src/data/parts.ts` |
 | Introduction | `src/data/introduction.ts` — one entry in `pages` per printed book page (1199–1207), footnotes per page; Arabic words are typed as Arabic and set right-to-left automatically |
+| Translator | `src/data/translator.ts` (bio text, `**bold**` runs) · the reference letter and its English translation in `src/assets/translator/` · also credited on Home |
 
 ## Adding a sūrah
 Copy `s001.ts`. Each entry in `pages` is one printed book page, so the reader matches the book page for page.
@@ -39,5 +40,5 @@ Copy `s001.ts`. Each entry in `pages` is one printed book page, so the reader ma
 src/domain     Surah, BookPage, Footnote, Library, InlineParser (OOP, no React)
 src/services   Store base class, SettingsStore, ProgressStore
 src/components OrbitChart (home art), Sheet, NoteSheet, SettingsSheet, TabBar
-src/pages      Home, Surahs, IndexPage, Introduction, Reader
+src/pages      Home, Surahs, IndexPage, Introduction, Translator, Reader
 ```
