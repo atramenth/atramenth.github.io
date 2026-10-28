@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { OrbitChart } from "../components/OrbitChart.tsx";
+import { TRANSLATOR } from "../data/translator.ts";
+import { IconNext } from "../components/Icons.tsx";
 import { useStore } from "../hooks/useStore.ts";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
@@ -11,6 +13,11 @@ export default function Home() {
   return (
     <main className="home">
       <OrbitChart />
+      <Link className="home__credit" to="/translator" aria-label={`Translated by ${TRANSLATOR.name}. Read about the translator.`}>
+        <small>Translated by</small>
+        <strong>{TRANSLATOR.name}</strong>
+        <IconNext />
+      </Link>
       <div className="home__foot">
         <p className="home__line">The Qur’ān in English, read closely.</p>
         <div className="home__legend" aria-hidden="true">

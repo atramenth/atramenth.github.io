@@ -33,6 +33,13 @@ export const IconIntro = () => (
     <path d="M12 12v6" strokeOpacity="0.55" />
   </Svg>
 );
+export const IconTranslator = () => (
+  <Svg>
+    <path d="M12 20.5 7 12.2 9.2 4h5.6L17 12.2z" />
+    <path d="M12 20.5V13.2" strokeOpacity="0.55" />
+    <circle cx="12" cy="11.6" r="1.1" />
+  </Svg>
+);
 export const IconBack = () => (
   <Svg>
     <path d="M14.5 5.5 8 12l6.5 6.5" />

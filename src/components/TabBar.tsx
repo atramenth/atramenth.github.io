@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { IconHome, IconIndex, IconIntro, IconSurahs } from "./Icons.tsx";
+import { IconHome, IconIndex, IconIntro, IconSurahs, IconTranslator } from "./Icons.tsx";
 
 const TABS = [
   { to: "/", label: "Home", icon: <IconHome />, end: true },
   { to: "/surahs", label: "Sūrahs", icon: <IconSurahs />, end: false },
   { to: "/index", label: "Index", icon: <IconIndex />, end: false },
   { to: "/introduction", label: "Introduction", icon: <IconIntro />, end: false },
+  { to: "/translator", label: "Translator", icon: <IconTranslator />, end: false },
 ];
 
 export function TabBar() {

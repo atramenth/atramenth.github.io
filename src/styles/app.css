@@ -106,8 +106,8 @@ code { font-family: var(--font-mono); font-size: 0.85em; background: var(--surfa
 .seg--tight button { font-size: 0.88rem; padding: 0.5rem 0.3rem; }
 
 /* ---------- Tab bar ---------- */
-.tabbar { position: fixed; inset: auto 0 0 0; z-index: 20; height: var(--tab-h); padding-bottom: env(safe-area-inset-bottom); display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bg); border-top: 1px solid var(--border); }
-.tab { display: grid; place-content: center; justify-items: center; gap: 0.15rem; color: var(--text-3); font-size: 0.7rem; letter-spacing: 0.02em; transition: color 0.2s; }
+.tabbar { position: fixed; inset: auto 0 0 0; z-index: 20; height: var(--tab-h); padding-bottom: env(safe-area-inset-bottom); display: grid; grid-template-columns: repeat(5, 1fr); background: var(--bg); border-top: 1px solid var(--border); }
+.tab { min-width: 0; display: grid; place-content: center; justify-items: center; gap: 0.15rem; color: var(--text-3); font-size: 0.7rem; letter-spacing: 0.02em; transition: color 0.2s; }
 .tab.is-active { color: var(--text); }
 .tab.is-active svg { color: var(--accent-bright); }
 
@@ -308,3 +308,26 @@ a.row:hover { background: var(--surface); }
 /* Bismillah under a sūrah title, and the "more to come" note on partial sūrahs */
 .bismillah { display: grid; justify-items: start; margin-bottom: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: 1.05em; line-height: 1.4; }
 .partial { margin-top: 2rem; padding-top: 1rem; border-top: 1px dashed var(--border-strong); font-size: 0.8rem; color: var(--text-3); text-align: center; }
+
+/* ---------- Translator ---------- */
+/* Home: her name is the second element under the ring. */
+.home__credit { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 0.9rem; width: 100%; max-width: 22rem; min-height: 3.6rem; padding: 0.7rem 1.1rem 0.75rem; border: 1px solid var(--border-strong); border-radius: 16px; transition: background 0.2s, border-color 0.2s; }
+.home__credit:hover { background: var(--surface); border-color: var(--text-3); }
+.home__credit small { grid-column: 1 / -1; color: var(--text-3); font-size: 0.74rem; letter-spacing: 0.02em; }
+.home__credit strong { font-family: var(--font-display); font-weight: 600; font-size: 1.65rem; line-height: 1.15; color: var(--text); }
+.home__credit svg { color: var(--accent-bright); }
+@media (max-height: 720px) {
+  .home { gap: 0.9rem; }
+  .home__foot { gap: 0.7rem; }
+  .orbit { width: min(100%, 30rem, 50dvh); }
+}
+
+/* Page: biography and the reference letter */
+.bio__sign { text-align: right; font-style: italic; color: var(--text-2); margin-top: -0.2rem; }
+.bio strong { font-weight: 600; color: var(--text); }
+.letter { margin-top: 2.5rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+.letter h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.6rem; line-height: 1.2; }
+.letter__frame { display: block; margin-top: 0.9rem; border: 1px solid var(--border-strong); border-radius: 12px; overflow: hidden; background: var(--paper); }
+.letter__frame:hover { border-color: var(--text-3); }
+.letter img { display: block; width: 100%; height: auto; }
+.letter figcaption { margin-top: 0.7rem; color: var(--text-3); font-size: 0.85rem; line-height: 1.5; }
