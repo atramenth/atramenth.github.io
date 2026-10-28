@@ -5,7 +5,7 @@ import { useStore } from "../hooks/useStore.ts";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
 
-function Row({ item }: { item: CatalogItem }) {
+function Row({ item, continues }: { item: CatalogItem; continues: boolean }) {
   const ready = library.isAvailable(item.number);
   const body = (
     <>
@@ -19,7 +19,9 @@ function Row({ item }: { item: CatalogItem }) {
       <span className="row__main">
         <strong>{item.name}</strong>
         <small>
-          {item.place === "Madinah" ? "Madīnah" : "Makkah"} · {item.ayahCount} āyāt · p. {item.bookPage}
+          {continues
+            ? `Continued from Part ${library.partOf(item.number)}`
+            : `${item.place === "Madinah" ? "Madīnah" : "Makkah"} · ${item.ayahCount} āyāt · p. ${item.bookPage}`}
         </small>
       </span>
       <span className="row__tag">{ready ? "Read" : "Soon"}</span>
@@ -69,9 +71,9 @@ export default function Surahs() {
               </span>
             </summary>
             {items.length === 0 ? (
-              <p className="part__note">Begins inside a sūrah from an earlier part.</p>
+              <p className="part__note">No sūrah data for this part.</p>
             ) : (
-              items.map((item) => <Row key={item.number} item={item} />)
+              items.map(({ item, continues }) => <Row key={item.number} item={item} continues={continues} />)
             )}
           </details>
         ))}

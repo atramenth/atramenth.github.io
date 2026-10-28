@@ -55,19 +55,36 @@ export class Library {
     return next - this.items[n - 1].bookPage;
   }
 
-  /** Part (1–30) in which a surah begins. */
-  partOf(n: number): number {
+  /** Part (1–30) that contains a given verse. Compares (surah, ayah), not just the surah. */
+  partAt(surah: number, ayah: number): number {
     let part = 1;
-    for (const s of this.partStarts) if (s.surah <= n) part = s.part;
+    for (const s of this.partStarts) {
+      if (s.surah < surah || (s.surah === surah && s.ayah <= ayah)) part = s.part;
+    }
     return part;
   }
 
-  /** Surahs grouped by the part they begin in (parts starting mid-surah get an empty list). */
-  byPart(): { part: number; items: CatalogItem[] }[] {
-    const groups = new Map<number, CatalogItem[]>();
+  /** Part (1–30) in which a surah begins. */
+  partOf(n: number): number {
+    return this.partAt(n, 1);
+  }
+
+  /** First and last part a surah runs through (Al-Baqarah: 1 to 3). */
+  partRange(n: number): { first: number; last: number } {
+    return { first: this.partOf(n), last: this.partAt(n, this.items[n - 1].ayahCount) };
+  }
+
+  /**
+   * Surahs listed under every part they run through. `continues` is true when
+   * the surah began in an earlier part.
+   */
+  byPart(): { part: number; items: { item: CatalogItem; continues: boolean }[] }[] {
+    const groups = new Map<number, { item: CatalogItem; continues: boolean }[]>();
     for (const item of this.items) {
-      const p = this.partOf(item.number);
-      groups.set(p, [...(groups.get(p) ?? []), item]);
+      const { first, last } = this.partRange(item.number);
+      for (let p = first; p <= last; p++) {
+        groups.set(p, [...(groups.get(p) ?? []), { item, continues: p > first }]);
+      }
     }
     return this.partStarts.map((s) => ({ part: s.part, items: groups.get(s.part) ?? [] }));
   }
