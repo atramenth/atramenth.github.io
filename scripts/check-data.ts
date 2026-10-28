@@ -27,10 +27,14 @@ for (const f of readdirSync(dir).filter((f) => /^s\d{3}\.ts$/.test(f))) {
   try {
     const s = new Surah(data);
     const last = s.pages.flatMap((p) => p.verses).at(-1)?.number;
-    if (last !== CATALOG[n - 1].ayahCount) fail(`${f}: last verse ${last}, catalog says ${CATALOG[n - 1].ayahCount}`);
+    if (s.partial) {
+      if (last === CATALOG[n - 1].ayahCount) fail(`${f}: reaches the last verse, remove "partial: true"`);
+    } else if (last !== CATALOG[n - 1].ayahCount) {
+      fail(`${f}: last verse ${last}, catalog says ${CATALOG[n - 1].ayahCount} (set "partial: true" if pages are missing)`);
+    }
     const cited = new Set(s.pages.flatMap((p) => p.noteIds));
     for (const id of s.footnotes.keys()) if (!cited.has(id)) fail(`${f}: footnote ${id} is never cited`);
-    console.log(`✓ ${f}: ${s.pages.length} pages, ${s.footnotes.size} notes`);
+    console.log(`✓ ${f}: ${s.pages.length} pages, ${s.footnotes.size} notes${s.partial ? ", partial (ends at verse " + last + ")" : ""}`);
   } catch (e) {
     fail(`${f}: ${(e as Error).message}`);
   }

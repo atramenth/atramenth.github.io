@@ -47,11 +47,13 @@ export class BookPage {
 /** A fully validated surah ready for the reader. */
 export class Surah {
   readonly number: number;
+  readonly partial: boolean;
   readonly pages: readonly BookPage[];
   readonly footnotes: ReadonlyMap<number, Footnote>;
 
   constructor(data: SurahData) {
     this.number = data.number;
+    this.partial = data.partial ?? false;
     this.pages = data.pages.map((p) => new BookPage(p));
     this.footnotes = new Map(data.footnotes.map((f) => [f.id, new Footnote(f)]));
     this.validate();

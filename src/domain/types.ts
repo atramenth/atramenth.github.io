@@ -35,7 +35,13 @@ export interface DividerBlock {
   type: "divider";
 }
 
-export type PageBlock = VerseBlock | DividerBlock;
+/** The unnumbered opening formula printed under a sūrah title (every sūrah except 1 and 9). */
+export interface BismillahBlock {
+  type: "bismillah";
+  lines: MarkedText[];
+}
+
+export type PageBlock = VerseBlock | DividerBlock | BismillahBlock;
 
 export interface HeadingData {
   title: MarkedText;
@@ -51,6 +57,8 @@ export interface PageData {
 
 export interface SurahData {
   number: number;
+  /** True while only some of the sūrah’s pages have been added. */
+  partial?: boolean;
   pages: PageData[];
   footnotes: FootnoteData[];
 }
