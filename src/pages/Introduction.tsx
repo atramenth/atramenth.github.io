@@ -1,8 +1,60 @@
+import { Fragment } from "react";
 import { InlineText } from "../components/InlineText.tsx";
 import { INTRODUCTION } from "../data/introduction.ts";
+import type { IntroBlock } from "../domain/types.ts";
+
+function Block({ block }: { block: IntroBlock }) {
+  switch (block.type) {
+    case "basmala":
+      return (
+        <p className="intro__basmala">
+          {block.lines.map((l, i) => (
+            <span key={i}>
+              <InlineText text={l} staticNotes />
+            </span>
+          ))}
+        </p>
+      );
+    case "title":
+      return (
+        <h2 className="intro__title">
+          <InlineText text={block.text} staticNotes />
+        </h2>
+      );
+    case "heading":
+      return (
+        <h3 className={`intro__heading${block.italic ? " is-italic" : ""}`}>
+          <InlineText text={block.text} staticNotes />
+        </h3>
+      );
+    case "lines":
+      return (
+        <p className="intro__lines">
+          {block.lines.map((l, i) => (
+            <Fragment key={i}>
+              {i > 0 && <br />}
+              <InlineText text={l} staticNotes />
+            </Fragment>
+          ))}
+        </p>
+      );
+    case "ornament":
+      return (
+        <p className="intro__ornament" aria-hidden="true">
+          {"❊".repeat(block.count)}
+        </p>
+      );
+    default:
+      return (
+        <p className={`intro__p${block.continued ? " is-continued" : ""}${block.continues ? " is-continues" : ""}`}>
+          <InlineText text={block.text} staticNotes />
+        </p>
+      );
+  }
+}
 
 export default function Introduction() {
-  const empty = INTRODUCTION.sections.length === 0;
+  const empty = INTRODUCTION.pages.length === 0;
   return (
     <main className="screen screen--read">
       <header className="screen__head">
@@ -19,19 +71,26 @@ export default function Introduction() {
           </svg>
           <h2>Waiting for the text</h2>
           <p>
-            Add the translator’s introduction to <code>src/data/introduction.ts</code>. Each section takes a heading and paragraphs.
+            Add the translator’s introduction to <code>src/data/introduction.ts</code>. Each entry in <code>pages</code> is one printed book page.
           </p>
         </div>
       ) : (
-        <article className="prose">
-          {INTRODUCTION.sections.map((s, i) => (
-            <section key={i}>
-              <h2>{s.heading}</h2>
-              {s.paragraphs.map((p, j) => (
-                <p key={j}>
-                  <InlineText text={p} />
-                </p>
+        <article className="intro">
+          {INTRODUCTION.pages.map((page) => (
+            <section key={page.bookPage} className="intro__page" aria-label={`Book page ${page.bookPage}`}>
+              {page.blocks.map((b, i) => (
+                <Block key={i} block={b} />
               ))}
+              {page.footnotes.length > 0 && (
+                <ul className="intro__notes" aria-label="Footnotes">
+                  {page.footnotes.map((f) => (
+                    <li key={f.id}>
+                      {f.id}. <InlineText text={f.text} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p className="intro__no">{page.bookPage}</p>
             </section>
           ))}
         </article>

@@ -1,10 +1,244 @@
 import type { IntroductionData } from "../domain/types.ts";
 
 /**
- * Translator’s introduction (the last part of the book).
- * Add one `sections` entry per heading; each paragraph is a MarkedText string.
+ * Translator’s introduction — book pages 1199–1207, transcribed exactly as printed
+ * (spelling, punctuation and the printed "the-" line-end hyphens are kept as they are).
+ * Markup: {n} footnote marker (numbered per printed page) · [ ] translator’s insertion.
+ * Arabic words are written as Arabic text; the reader detects and sets them right-to-left.
+ * `continued` / `continues` mark a paragraph that crosses a printed page break.
  */
 export const INTRODUCTION: IntroductionData = {
   title: "Introduction of the Translator",
-  sections: [],
+  pages: [
+    {
+      bookPage: 1199,
+      blocks: [
+        { type: "basmala", lines: [`In the Name of Allāh`, `The Merciful Beneficent`] },
+        { type: "title", text: `The Book of Wisdom` },
+        { type: "heading", italic: true, text: `Introduction` },
+        {
+          type: "p",
+          text: `The Holy Qur’ān does not belong only to a selected people by the name of Muslims; it is but for all people of the world, since Allāh, the Almighty God has proclaimed its universality through various Words of Revelations: "This Qur’ān is a Grace and Guidance for all mankind.{1}" And He has announced His Ordained prophecy: "Say O, Messenger: This is a Grand News, from which you turn away."{2} This Holy Qur’ān is a Great Admonition and Commend for all men in the human society and surely you will know about this News after a time.{3}`,
+        },
+        {
+          type: "p",
+          text: `In the first Sūrah revealed to the Holy Messenger of Islām, we the pro-pen people learn that "Allāh is the One Who created man and is the One Who taught him all sciences through the knowledge of writing with pen; and He taught man what he did not know."{4} Allāh enjoins man "to think" about his own being and about the bounties bestowed upon him by his Creator; and He enjoins man to value the faculties of sight, hearing and intelect by seeing the truth, listening to the truth and realizing the truth; all these spiritual gifts co-operate for discriminating man from the cattle: In Allāh’s sight material bounties have been produced for both of them: "Do they not see that We drive water to the dry and bare of herbage land and produce by it vegetations which their cattle and they themselves eat from it? Will they not open their eyes to see the truth?{5} "And all these bounties are a provision for you and your cattle."{6} Allāh’s granting value for justice is to the extent that after creation of "the heavens" He placed the balance"{7} to bar mankind from transgressing to the right of the other people and He appointed the due punishment for the injust and the oppressors, thus He called them the self-oppressors.{8}`,
+        },
+      ],
+      footnotes: [
+        { id: 1, text: `12:104, 68:52 and 81:27` },
+        { id: 2, text: `38:67-68` },
+        { id: 3, text: `38:87-88` },
+        { id: 4, text: `96:4-6` },
+        { id: 5, text: `32:27` },
+        { id: 6, text: `80:32` },
+        { id: 7, text: `55:7-9` },
+        { id: 8, text: `2:57 and 3:117` },
+      ],
+    },
+    {
+      bookPage: 1200,
+      blocks: [
+        {
+          type: "p",
+          text: `Regarding justice Allāh states: "And when you speak [or judge] be just though it may be against the benefit of your close relatives."{1} Even if only this Command is obeyed and practised by every individual, an active monotheistic concience will gradually control man’s conduct; and this prerequisite lesson will prepare the normal and non psychosis man to learn how to abstain from band or group-cultivating oppression, motivated by the-blind-born eyes of ignorance which is the root of any injustice; and thus a universal habit of doing justice which is the most urgent need of all will be flourishing throughout the human communities.`,
+        },
+        { type: "heading", text: `Translators and Translations of the Holy Qur’ān` },
+        {
+          type: "p",
+          text: `The Holy Qur’ān while confirming the previous scriptures, has been introduced to mankind as the Final Message of Allāh the Almighty God and the Messenger of it as the last of all the Messengers.{2} However the religion is not compulsory after the truth is distinguished from falsehood.{3}`,
+        },
+        {
+          type: "p",
+          text: `Now the question arises why the Message of a Book which advocates for rightousness, justice, knowledge and all the spiritual means which cause any individual to attain prosperity in his/her life and salvation in the Hereafter has not reached mankind as it has been Commanded by the Creator of the-heavens and the earth and all creatures? The true answer is that the-universal Message of the Holy Qur’ān that should have been conveyed via translation from Arabic into all foreign languages, has not been done as it should be: The reason that translations have failed to reach the Message I can say about English is due to several main factors: First of all translation of the Holy Qur’ān by a non-Muslim translator even if not spiteful can be regarded as valid as translation of a book or a text on geology, physic, space or other sciences by a non-specialist: In a religious text having a feel for both languages which is highly essential in any translation comes after having a deep belief plus a sound knowledge of the related culture.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `The translation known as the best among the non-Muslim translators belongs to Arthur John Arberry (1955) about two centuries after George Sale (1734) who is the first well known but the one who`,
+        },
+      ],
+      footnotes: [
+        { id: 1, text: `6:152` },
+        { id: 2, text: `33:40` },
+        { id: 3, text: `2:256` },
+      ],
+    },
+    {
+      bookPage: 1201,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `produced unfair and rough material for Christian missionaries. Mr.Arberry has reproduced in English language an eloquent, poetic and literary text rather than a comprehensive translation of the Holy Qur’ān; his view about untransability of the Qur’ān which has also been transmitted to other translators shows his aim: "The rhetoric and rhythm of the Arabic of the-Koran are so characteristic, so powerful, so highly emotive that any version is bound to be a poor copy of the original. My chief reason for offering this new version of a book which has been translated many times already is that in no previous rendering has a serious attempt been made to imitate those rhetorical and rhythmical patterns which are the glory and the sublimity of the Koran."{1}`,
+        },
+        {
+          type: "p",
+          text: `To him "glory" and "sublimity" of the Holy Qur’ān reside in rhetorical and rhythmical pattern of the Arabic language whereas while listening to Allāh’s Words of Truth a believer cannot stop weeping out of ecstasy raised by the-supreme might of the meanings.`,
+        },
+        {
+          type: "p",
+          text: `J.M. Rudwell, Henry Palmer, Richard Bell and N. Dawood are also on the-list of the well known non-Muslim translators of the Holy Qur’ān; they all are well excused for literal or distorted free translations due to their lack of required knowledge of the text as well as their being bias and prejudicial.`,
+        },
+        {
+          type: "p",
+          text: `English speaking Muslim translators with few exceptions have not succeeded to free themselves from the old literary language for the benefit of the aim of reaching the meaning to the readers and some of them have not themselves acquired the information about the background of the-Words of Revelations (the verses)`,
+        },
+        {
+          type: "p",
+          text: `The two well known Muslim translators, Marmaduke Pickthall the first English speaking translator of the Holy Qur’ān (1930) and Dr. Thomas Irving both have treated the text economically regarding explanations and notes related to the texts; however Dr. Irving (Haj Taleem Ali) the American Muslim, being enthusiastic to reach the meaning of Qur’ān to the reader has made a compensation through adopting an every day, easy and simple language.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `The relatively notable translation with full commentary and detailed explanations belongs to Abdullah Yusuf Ali of Sunni school; but apart`,
+        },
+      ],
+      footnotes: [{ id: 1, text: `From preface to "the Interpreted Qur’ān"` }],
+    },
+    {
+      bookPage: 1202,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `from his psychological approach and imaginary interpretations rendered in some of his footnotes, he has left one big alas about his endeavour: By using hard effort he has managed to leave out the historical events such as Ghadire Khom as he translated 5:67 or the sacrifice of Ali (AS) in the night of the Holy Messenger’s Emigration as he tackled 2:207; naturaly if these important events, testified by the authentic Islāmic resources are to be neglected one can expect the whole Sūrah (‘Ādyāt) and 76:7-9 or similar Words of Revelation to appear with commentary of silence. A Muslim translator of the Holy Qur’ān should not in Allāh’s Presence prefer his sectarian attitude to the truth. Mr.Ahmad Ali, a Shiah translator from Pakistan has not neglected any necessary information in his translation and has shown his devotion to Ahle Bait (AS) sincerely; I wish he had been moderate about historical events and also had applied a simple and easy to understand language quite far from the antiquated words and exppressions. M.M. Shakir another Shiah translator is also one of the most economical in writing notes and comments; he has benefited generously from Mulāna Mohammad Ali of Ahmadiah school without any acknowledgement; with some Sūrahs he has copied the whole text daringly, so his deed is entitled to a severe blame notwithstanding that he mentions Imām Ali (AS) and Imām Hossain (AS) in the Words of Revelation related to them.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `The second negative factor results from the unintentional negligence against Allāh’s admonition: "And We have revealed the Holy Qur’ān easy and simple to be understandable and guiding to the people; is there any one who is willing to receive admonition?{1} This ‘Āyat which is repeated in the same Sūrah implies the preference of semantic value of the text over its stylistic aspect; also Allāh the Merciful repeatedly declares: "See how We explain Our Words of Revelation so that they may understand [and turn to the truth.]"{2} Thus all sorts of similitudes and parables are employed to teach the Truth which is the ultimate goal of Religion. Some translators have confined themselves to the word for word translation to uphold the holiness of the Words of God as it happened with the Bible in the earlier time; and some other have tried to regard the utmost eloquency and literary skill in their translations; In a literary text as I have elaborated in the book`,
+        },
+      ],
+      footnotes: [
+        { id: 1, text: `54:17, 22, 32, 40` },
+        { id: 2, text: `6:65` },
+      ],
+    },
+    {
+      bookPage: 1203,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `Principles and Foundations of Translation (1979) faithfulness demands reproduction of the style, structure and the meaning altogether; whereas faithfulness regarding translation of the religious texts means paying full attention for conveying the meaning in the framework of the Message; yet translator should have in mind that preserving the tone of the utterance whether be commanding or ironical is a necessary consideration because as part of the language of the Message it does contribute to the meaning. Some translators have been carried away by the idea of reproducing the rhyming and rhetorical pattern of some Makkan Sūrahs therefore they have lost the meaning of the Message. It is to be noted that the Sign of the Messengership of Islām to the eyes of the beholders was the Miracle of turning an unlettered man to a scribe of the Holy Qur’ān, so it is quite possible that the Man of the Blessed Soul being joyous from the gift bestowed upon him by Allāh the Almighty God and for experiment with some Poetic Makkan Sūrahs entered the field of rivalery for showing his poetic utmost skill against the disbelieving yet competent writers and poets of Arabia. But after he is accused of being a poet, the thunder-like Message disperses the- accusation: "We have not taught the Messenger writing poetry, nor it is meet for him; this is but a Reminder and an Expositoring Divine Text that it may give admonition [to those who are spiritually alive] and the Word of Chastisement may be proved against the disbelievers [who are spiritually dead.]{1}" So both literal and literary translations have done their harms in reaching the Divine Message of the Truth to its rightful audience.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `Another factor included among the reasons of the shortcomings is the-heedlessness about the necessity of preserving the linkage between the-Revelations by related punctuations: Majority of translators have left the-readers, or the learners wandering about the ending of each Word of Revelation; lack of cohesion between Words of Revelation (verses) is a grave lapse that both in Persian and English has resulted in the reluctance of the unaware readers towards the text; and this lack of cohesion, as I have made out, partly is due to considering normal pattern of punctuation for the ending of each ‘Āyat or verse; a complete sentence usually is shown by a dot, but in the case of the Words of Revelation though the sentence be`,
+        },
+      ],
+      footnotes: [{ id: 1, text: `36:69` }],
+    },
+    {
+      bookPage: 1204,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `complete, to show the continuance of the utterance, one can employ semicolon; and even with a comma in the case of incomplete or synonym-like sentences; and this means that sometimes the end of a Qur’ānic sentence is the end of several related ‘Āyats or Words of Revelation; any effort in the line of producing cohesion between the ‘Āyats makes the reader to understand the meaning better. A properly used punctuation does help the preservance of the linkage between the Words of Revelation; abundant confusions come about if a translator does not charge his responsibility in this regard, since the- suspended sentences in the text of translation, can raise many "out of context" judgements about the meaning and the Message. This type of carelessness has helped the anti-Islam critics to make their spitefulness seem convincing; and they have raised negative arguments about the- seeming confusion, whereas misunderstandings usually come from lack of knowledge.`,
+        },
+        { type: "heading", text: `The Unseen Values` },
+        {
+          type: "p",
+          text: `The gratest values of the Holy Qur’ān which almost all commentators and translators both in English and Persian have failed to translate justly and accurately are Allāh’s Names of Outstanding Excellence known as Asmā ul Hosnā. This factor I believe is the major flaw which has caused confusion and brought about an evident sign of incompleteness of the-meanings of the Words of Revelations throughout the Book. Any translation void of attention to these meanings which usually confirm and complete each ‘Āyat (verse) loses a substential part of its validity; to elaborate upon my point, following revision is demanded:`,
+        },
+        {
+          type: "p",
+          text: `The Divine fascination of Allāh’s Names of Outstanding Excellence is one of the secrets by which a believer holds on for the stand of the Holy Qur’ān as a Miracle. These Names as narrated by the authorities are at least ninety-nine, and Allāh’s worshippers are enjoined to invoke to their Creator&Nurturer through them: "And to Allāh belong Names of Outstanding Excellence, so invoke to Him through these Names and leave those who distort Allāh’s Names; they will soon be punished for what they do."{1}`,
+        },
+      ],
+      footnotes: [{ id: 1, text: `7:180` }],
+    },
+    {
+      bookPage: 1205,
+      blocks: [
+        {
+          type: "p",
+          text: `Apart from so many benefits narrated about the Names of Outstanding Excellence, I by Allāh’s Will, have recognized three main aims included in the Divine creation of them:`,
+        },
+        {
+          type: "p",
+          text: `1- Monotheism or the Unity of Allāh the Almighty God is made clear by a group of Divine Attributes which appear in twins, yet seem to be contradictory in nature, such as: اَلحَيُّ الْقَيّوم (The Eternal Live), اَلْوَاحِدُ الْقَهّار (The One yet the Dominant) and اَلْمَلِكُ الْقُدّوس (the Holy King).`,
+        },
+        {
+          type: "p",
+          text: `Such Attributets belong to Allāh only and they rule out any resemblance between the Creator and the created ones, since Allāh the Almighty God is the only One Who owns the Eternal Life; and only Allāh is the One yet the Dominant over all things and powers; and also Allāh is the only Pure and Flawless King; even among the perfect human beings i.e. , the-Messengers of Allāh, such example cannot be traced.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `2- Remembrance of the Names of Outstanding Excellence provides a manifest effect in man’s spiritual and mental upbringing, provided that they are learned and pondered over profoundly. Allāh has guided man to regard these Divine Attributes as his models in self-cultivation towards perfection: When Allāh introduces Himself as "the Mighty Forgiving,"{1} عَفُوّاً قديراً it is to be understood by the believers that notwithstanding owning the Supreme Might, Allāh chooses Forgiveness; or when Allāh introduces Himself as the-Knowing Decreer, عليماً حكيماً{2} a believer learns that a decreer has to pass his injunctions and judgements on the basis of knowledge and truth. The point that I find it vital to be mentioned here is that the Attributes should be translated according to the context, and particularly when they appear as twins, the task of the translators doubles: Not only according to the context should translation be done, but also one of the Attributes, according to the context should stand as an adjective for the other one as a nominative case; thus they are not to be treated as synonyms and not to be separated by the related punctuation i.e., comma; otherwise the Mighty Forgiving will come out as "the Mighty, the Forgiving" and the Knowing Decreer عليماً حكيماً as"the Knowing, the Wise." In the latter with reference to the context which contains decrees regarding distribution of heritage, the right equivalent, "the Knowing Decreer" has been substituted by "the Wise,the Knowing",`,
+        },
+      ],
+      footnotes: [
+        { id: 1, text: `4: 149` },
+        { id: 2, text: `4: 11` },
+      ],
+    },
+    {
+      bookPage: 1206,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `consequently the two wrongly considered separate Attributes have failed in contributing any coherent meaning to one another and naturally to the-whole Message.{1} Allāh the Almighty God has taught us to prove the truth of this scientific recognition through the concluding part of this Word of Revelation (verse 60/10) ذالكم حُكمُ الله يَحكُمُ بينكم و الله عليمٌ حكيمٌ By this example certain result is to be achieved; since both the noun and the verb i.e., حُكم and يَحكُمُ are elements of the Divine Decree: Marriage of the newly believing women with the Muslim men and the condition of divorce from the disbelieving men and what they are to be paid or taken from against what they have spent on the women is decided by God; so in this verse عليمٌ حكيمٌ is bound to be known and translated "the Knowing Decreer" rather than All Wise, All Knowing.`,
+        },
+        {
+          type: "p",
+          text: `How to be exact with the meaning of Allāh’s Names of Outstanding Excellence regarding their relation with the contexts? For example واسِعٌ عَليمٌ in one context means the Knowing Dominion-Expander when the ‘Āyat deals with vastness of Allāh’s ownership of the earth (2:115) but when ‘Āyat promises the increase of wealth for those who spend for Allāh’s Sake in charity, then واسِعٌ عَليمٌ means the Knowing Bounty-Increaser (2:261); in the case of Tālūt against those who argue about his lack of merits to be a king, due to lack of wealth their prophet says: "He has been granted power of knowledge and physical strength, so here واسِعٌ عَليمٌ is the Knowing Power-Bestower" (2:247) In all three different contexts, following translations show separation between the Attributes:`,
+        },
+        {
+          type: "lines",
+          lines: [
+            `1. Arberry: God is All Embracing, All Knowing`,
+            `2. Pickthall: Allah is All Embracing, All Knowing`,
+            `3. Mir Ahmad Ali: God is All Pervading, All Knowing`,
+            `4. Yusuf Ali: God is All Pervading, All Knowing`,
+          ],
+        },
+        {
+          type: "p",
+          text: `The reason that the translators copy one another is to be traced in the point that they have not regarded with the due precision the nuances of the Names and the Attributes according to the differece of the contexts. In the book Translating the Fundamental Meanings of the Holy Qur’ān (1999) I have presented various examples for subjects of similar functions.`,
+        },
+        {
+          type: "p",
+          continues: true,
+          text: `3- If appreciation of the meaning is provided, a believer may receive`,
+        },
+      ],
+      footnotes: [
+        { id: 1, text: `Regarding this particular aspect, a revision of English and Persian translations of the Holy Qur’ān is suggested.` },
+      ],
+    },
+    {
+      bookPage: 1207,
+      blocks: [
+        {
+          type: "p",
+          continued: true,
+          text: `the Divine Tranquility [or سَكينه] by invoking to Allāh’s Attributes and Remembrances which has been enjoined emphatically in the Holy Qur’ān,{1} and a believer, can hope for the benefit of the intercession of the Divine Attributes.`,
+        },
+        { type: "ornament", count: 1 },
+        {
+          type: "p",
+          text: `Talking about the shortcomings of English translations of the Holy Qur’ān I would like to quote the word of Alfred Guillaume in his commentary on Mr. Arberry’s translation as the evident result of the discussed subject:`,
+        },
+        {
+          type: "p",
+          text: `"No book in the history of the world with the possible exception of Bible has dramatically influenced the course of civilization as the Koran. Yet no book of comparable importance has been understood so little in the West." What a regret for us as Muslims who were negligent about reaching the-Message of Allāh the Almighty God once He has put a duty on us regarding other nations.{2} Why is that? Even in a Muslim country like Iran excluding the last decade I believe more than ninety percent of the population have learned the teachings of the Book of their Religion through preachings of ulamāa and preachers rather than reading the renderings of the Holy Text, since translation in one volume is only a product of 50 years ago; however the believers recite the Arabic text, adore it and believe in it wholeheartedly. Voluminous yet highly valuable interpretations and commentaries of the Holy Qur’ān written in Persian are neither accessible nor understandable for all people; what they need is a meaningful, easy and comprehensive translation because the Holy Qur’ān does not only prescribe sets of religious decrees, but it is flowing with Words of Wisdom which guarantee health, happiness and tranquility for man’s soul for which no laboraty has been established in this "age of laboratories", all dedicated to man’s physical and material purposes.`,
+        },
+        {
+          type: "p",
+          text: `Regarding the above mentioned problems whether technical or spiritual, a serious effort about translation of the Holy Qur’ān is incumbent on the-obedient worshippers of Allāh as compensation for a grave negligence which has so far prevailed the Islāmic cultural organizations throughout the-world; however the truth remains that a Book which has been revealed for the benefit of all mankind has remaind unknown; thus many generations have been deprived from their Creator’s Grace and Guidance.`,
+        },
+        { type: "ornament", count: 3 },
+      ],
+      footnotes: [
+        { id: 1, text: `13: 28 and 33: 41` },
+        { id: 2, text: `2:143` },
+      ],
+    },
+  ],
 };
