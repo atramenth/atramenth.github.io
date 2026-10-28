@@ -137,6 +137,7 @@ export default function Reader() {
     );
   }
 
+  const parts = library.partRange(entry.number);
   const page = surah?.pages[current];
   const noteIds = page?.noteIds ?? [];
 
@@ -149,7 +150,7 @@ export default function Reader() {
         <div className="reader__title">
           <strong>{entry.name}</strong>
           <span>
-            Sūrah {entry.number} · Part {library.partOf(entry.number)}
+            Sūrah {entry.number} · {parts.first === parts.last ? `Part ${parts.first}` : `Parts ${parts.first}–${parts.last}`}
           </span>
         </div>
         <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label="Reading settings">
