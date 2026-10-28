@@ -41,15 +41,18 @@ for (const f of readdirSync(dir).filter((f) => /^s\d{3}\.ts$/.test(f))) {
     fail(`${f}: ${(e as Error).message}`);
   }
 }
-// Introduction: every marker needs a footnote on the same printed page, and every footnote must be cited.
-INTRODUCTION.pages.forEach((page, i) => {
-  if (i > 0 && page.bookPage !== INTRODUCTION.pages[i - 1].bookPage + 1) fail(`introduction: page order broken at ${page.bookPage}`);
-  const texts = page.blocks.flatMap((b) => ("text" in b ? [b.text] : "lines" in b ? b.lines : []));
+// Introduction: markers 1..N in reading order, each with exactly one footnote, each footnote cited.
+{
+  const texts = INTRODUCTION.blocks.flatMap((b) => ("text" in b ? [b.text] : "lines" in b ? b.lines : []));
   const cited = texts.flatMap((t) => InlineParser.noteIds(t));
-  const have = new Set(page.footnotes.map((f) => f.id));
-  for (const id of cited) if (!have.has(id)) fail(`introduction, page ${page.bookPage}: marker {${id}} has no footnote`);
-  for (const id of have) if (!cited.includes(id)) fail(`introduction, page ${page.bookPage}: footnote ${id} is never cited`);
-});
-if (INTRODUCTION.pages.length) console.log(`✓ introduction: ${INTRODUCTION.pages.length} pages (${INTRODUCTION.pages[0].bookPage}–${INTRODUCTION.pages.at(-1)!.bookPage})`);
+  const have = INTRODUCTION.footnotes.map((f) => f.id);
+  if (new Set(have).size !== have.length) fail("introduction: duplicate footnote ids");
+  cited.forEach((id, i) => {
+    if (id !== i + 1) fail(`introduction: marker {${id}} is out of order (expected {${i + 1}})`);
+    if (!have.includes(id)) fail(`introduction: marker {${id}} has no footnote`);
+  });
+  for (const id of have) if (!cited.includes(id)) fail(`introduction: footnote ${id} is never cited`);
+  if (INTRODUCTION.blocks.length) console.log(`✓ introduction: ${INTRODUCTION.blocks.length} blocks, ${have.length} notes`);
+}
 console.log(problems ? `${problems} problem(s)` : "All data checks passed");
 process.exit(problems ? 1 : 0);

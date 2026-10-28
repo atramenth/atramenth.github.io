@@ -22,7 +22,7 @@ npm run build
 |---|---|
 | Sūrahs (30 parts) | `src/data/surahs/sNNN.ts` — one file per sūrah, picked up automatically |
 | Index | `src/data/catalog.ts` (all 114 names, Makkah/Madīnah, book page, āyah counts) and `src/data/parts.ts` |
-| Introduction | `src/data/introduction.ts` — one entry in `pages` per printed book page (1199–1207), footnotes per page; Arabic words are typed as Arabic and set right-to-left automatically |
+| Introduction | `src/data/introduction.ts` — one continuous text (`blocks`) plus `footnotes` numbered in reading order; no paper page numbers. Arabic words are typed as Arabic and set right-to-left automatically |
 | Translator | `src/data/translator.ts` (bio text, `**bold**` runs) · the reference letter and its English translation in `src/assets/translator/` · also credited on Home |
 
 ## Adding a sūrah

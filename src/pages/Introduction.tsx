@@ -1,30 +1,57 @@
-import { Fragment } from "react";
+import { Fragment, useState, type ReactNode } from "react";
+import { IconBack, IconNext, IconType } from "../components/Icons.tsx";
 import { InlineText } from "../components/InlineText.tsx";
+import { SettingsSheet } from "../components/SettingsSheet.tsx";
+import { Sheet } from "../components/Sheet.tsx";
 import { INTRODUCTION } from "../data/introduction.ts";
 import type { IntroBlock } from "../domain/types.ts";
+import { library } from "../services/library.ts";
 
-function Block({ block }: { block: IntroBlock }) {
+/** Qur’ān references in a note (2:57, 4: 149, 54:17, 22 …) become the same chips the reader uses. */
+const REF = /(\d{1,3}):\s?(\d{1,3})(?:\s*[-–]\s*\d{1,3})*/g;
+
+function NoteText({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  let last = 0;
+  for (const m of text.matchAll(REF)) {
+    const at = m.index ?? 0;
+    if (at > last) parts.push(<Fragment key={at}>{text.slice(last, at)}</Fragment>);
+    const ready = library.isAvailable(Number(m[1]));
+    parts.push(
+      <span key={`r${at}`} className={`ref${ready ? "" : " is-soon"}`}>
+        {m[0]}
+      </span>,
+    );
+    last = at + m[0].length;
+  }
+  if (last < text.length) parts.push(<Fragment key="end">{text.slice(last)}</Fragment>);
+  return <>{parts}</>;
+}
+
+function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => void }) {
   switch (block.type) {
     case "basmala":
       return (
         <p className="intro__basmala">
           {block.lines.map((l, i) => (
-            <span key={i}>
-              <InlineText text={l} staticNotes />
-            </span>
+            <span key={i}>{l}</span>
           ))}
         </p>
       );
     case "title":
       return (
-        <h2 className="intro__title">
-          <InlineText text={block.text} staticNotes />
-        </h2>
+        <>
+          <h2 className="intro__title">{block.text}</h2>
+          <svg className="intro__rule" viewBox="0 0 240 14" aria-hidden="true">
+            <path d="M0 7h98M142 7h98" />
+            <polygon points="120,1.5 127,7 120,12.5 113,7" />
+          </svg>
+        </>
       );
     case "heading":
       return (
         <h3 className={`intro__heading${block.italic ? " is-italic" : ""}`}>
-          <InlineText text={block.text} staticNotes />
+          <InlineText text={block.text} onNote={onNote} />
         </h3>
       );
     case "lines":
@@ -33,7 +60,7 @@ function Block({ block }: { block: IntroBlock }) {
           {block.lines.map((l, i) => (
             <Fragment key={i}>
               {i > 0 && <br />}
-              <InlineText text={l} staticNotes />
+              <InlineText text={l} onNote={onNote} />
             </Fragment>
           ))}
         </p>
@@ -46,20 +73,36 @@ function Block({ block }: { block: IntroBlock }) {
       );
     default:
       return (
-        <p className={`intro__p${block.continued ? " is-continued" : ""}${block.continues ? " is-continues" : ""}`}>
-          <InlineText text={block.text} staticNotes />
+        <p className="intro__p">
+          <InlineText text={block.text} onNote={onNote} />
         </p>
       );
   }
 }
 
 export default function Introduction() {
-  const empty = INTRODUCTION.pages.length === 0;
+  const [noteId, setNoteId] = useState<number | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const empty = INTRODUCTION.blocks.length === 0;
+
+  const notes = INTRODUCTION.footnotes;
+  const index = notes.findIndex((n) => n.id === noteId);
+  const note = notes[index];
+  const prev = notes[index - 1];
+  const next = notes[index + 1];
+
   return (
     <main className="screen screen--read">
-      <header className="screen__head">
-        <h1>{INTRODUCTION.title}</h1>
-        <p>From the end of the book</p>
+      <header className="screen__head screen__head--row">
+        <div>
+          <h1>{INTRODUCTION.title}</h1>
+          <p>From the end of the book</p>
+        </div>
+        {!empty && (
+          <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label="Reading settings">
+            <IconType />
+          </button>
+        )}
       </header>
 
       {empty ? (
@@ -71,30 +114,44 @@ export default function Introduction() {
           </svg>
           <h2>Waiting for the text</h2>
           <p>
-            Add the translator’s introduction to <code>src/data/introduction.ts</code>. Each entry in <code>pages</code> is one printed book page.
+            Add the translator’s introduction to <code>src/data/introduction.ts</code> as <code>blocks</code> and <code>footnotes</code>.
           </p>
         </div>
       ) : (
         <article className="intro">
-          {INTRODUCTION.pages.map((page) => (
-            <section key={page.bookPage} className="intro__page" aria-label={`Book page ${page.bookPage}`}>
-              {page.blocks.map((b, i) => (
-                <Block key={i} block={b} />
-              ))}
-              {page.footnotes.length > 0 && (
-                <ul className="intro__notes" aria-label="Footnotes">
-                  {page.footnotes.map((f) => (
-                    <li key={f.id}>
-                      {f.id}. <InlineText text={f.text} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <p className="intro__no">{page.bookPage}</p>
-            </section>
+          {INTRODUCTION.blocks.map((b, i) => (
+            <Block key={i} block={b} onNote={setNoteId} />
           ))}
         </article>
       )}
+
+      {note && (
+        <Sheet
+          label={`Note ${note.id}`}
+          onClose={() => setNoteId(null)}
+          header={
+            <>
+              <span className="sheet__kicker">Note</span> {note.id}
+              <span className="sheet__of"> of {notes.length}</span>
+            </>
+          }
+        >
+          <article className="note" key={note.id}>
+            <p>
+              <NoteText text={note.text} />
+            </p>
+          </article>
+          <nav className="note-nav" aria-label="Notes">
+            <button type="button" className="btn btn--quiet" disabled={!prev} onClick={() => prev && setNoteId(prev.id)}>
+              <IconBack /> Previous
+            </button>
+            <button type="button" className="btn btn--quiet" disabled={!next} onClick={() => next && setNoteId(next.id)}>
+              Next <IconNext />
+            </button>
+          </nav>
+        </Sheet>
+      )}
+      {showSettings && <SettingsSheet onClose={() => setShowSettings(false)} />}
     </main>
   );
 }
