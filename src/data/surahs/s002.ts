@@ -1,13 +1,12 @@
 import type { SurahData } from "../../domain/types.ts";
 
 /**
- * Sūrah 2 · Al-Baqarah — book pages 4–40 so far (verses 1–151, partial).
+ * Sūrah 2 · Al-Baqarah — book pages 4–84 (verses 1–286, complete).
  * The book restarts footnote numbering on every page; here notes are numbered
  * once per sūrah in reading order (1 = Alif. Lām. Mīm., 2 = “The Muslims”).
  */
 const surah: SurahData = {
   number: 2,
-  partial: true,
   pages: [
     {
       bookPage: 4,
@@ -456,6 +455,413 @@ const surah: SurahData = {
         { type: "verse", number: 151, continues: true, lines: ["Similarly [for your guidance] We"] },
       ],
     },
+    {
+      bookPage: 41,
+      blocks: [
+        { type: "verse", number: 151, continued: true, lines: ["Sent among you a Messenger from", "Yourselves for reciting to you Our", "Words of Revelation and purifying you", "[From the filth of disbelief and", "Polytheism] and teaching you the Book", "And the Wisdom, and teaching you that", "Which you did not know;"] },
+        { type: "verse", number: 152, lines: ["Therefore [constantly] remember Me", "[By praying, and doing good deeds],", "Then I will remember you; and express", "Your thanks for all the Bounties and", "Do not be ingratitude to Me;"] },
+        { type: "verse", number: 153, lines: ["O, you who believe! Seek help [from", "Allāh] through patience and prayer;", "Verily, Allāh is the Supporter of", "The patients;"] },
+        { type: "verse", number: 154, lines: ["And do not say of those who are", "Martyred in the Path of Allāh that they", "Are “dead”; nay, they are living but,", "You do not perceive;{57}"] },
+        { type: "verse", number: 155, lines: ["We will surely test you [all] with", "Something of fear and hunger and", "Loss of wealth and lives and fruits.", "[O, Messenger] so give glad tidings to", "The patients!"] },
+        { type: "verse", number: 156, lines: ["[The patients are:] Those who when", "Afflicted with calamity they say:", "“Verily, to Allāh we belong and to Him", "We shall return.”"] },
+      ],
+    },
+    {
+      bookPage: 42,
+      blocks: [
+        { type: "verse", number: 157, lines: ["[These patients are:] Those for whom", "Are the Blessings and Grace from their", "Creator&Nurturer; and they are", "The guided ones indeed."] },
+        { type: "divider" },
+        { type: "verse", number: 158, lines: ["Verily, Safā and Marvah{58} are some of", "Allāh’s Waymarks; whoever, therefore", "Makes a pilgrimage to Ka’bah or", "Performs Umrah there shall be no", "Blame on him to go round them. And", "Whoever does good deed voluntarily,", "[Apart from religious obligations,", "Allāh will be bountiful in rewarding", "Him] verily, Allāh is the Source-", "Knowledge Appreciative."] },
+        { type: "verse", number: 159, lines: ["Verily, those who conceal the Evident", "Proofs, and the Guidance, which We", "Have sent down after We have made it", "Clear for the People of the Book,", "[About the Messenger and his Mission]", "They are the ones who will be cursed", "By Allāh and by the cursers, [the Angels", "And the believers],"] },
+      ],
+    },
+    {
+      bookPage: 43,
+      blocks: [
+        { type: "verse", number: 160, lines: ["Except those who turn repentant and", "Amend themselves and manifest", "The Truth [which they have concealed],", "It is to them that I relent since I am", "The Merciful-Repentance-Accepter."] },
+        { type: "verse", number: 161, lines: ["Verily, those who disbelieve and die", "While they are disbelievers, on them is", "The Curse of Allāh and the curse of", "The Angels and [the believers] of", "Mankind altogether;"] },
+        { type: "verse", number: 162, lines: ["They will abide therein [in the Hell", "Following the Curse], their punishment", "Will neither be lightened nor will they", "Be respited."] },
+        { type: "divider" },
+        { type: "verse", number: 163, lines: ["And your God is the One only;", "There is no God but Allāh,", "The Merciful Beneficent."] },
+        { type: "verse", number: 164, continues: true, lines: ["Verily, in the creation of the heavens", "And the earth; and in the difference", "Between the night and the day", "[Regarding light and darkness,", "Sleep and motion etc...]; and", "The ships which sail through sea with", "Goods which is of use to mankind;", "And the rain which Allāh sends down", "From the sky and makes the earth", "Alive therewith, after its death, and", "The moving [living] creatures of all", "Kinds that He has scattered therein;"] },
+      ],
+    },
+    {
+      bookPage: 44,
+      blocks: [
+        { type: "verse", number: 164, continued: true, lines: ["And in the whirling of the winds and", "The clouds which are held between", "The sky and the earth, [in all these] are", "Indeed Signs for those people who", "Ponder and use their reason."] },
+        { type: "verse", number: 165, lines: ["And of mankind are some who take", "[For worship] others instead of Allāh", "As rivals [to Him]; they love them as", "Allāh should be loved. But those who", "Believe in Allāh, love Allāh above all", "In the world. Those who  do wrong to", "Themselves [by worshipping idols] when", "They see the Torment, they will realize", "That all Power belongs to Allāh, and", "That Allāh is Severe in punishing;"] },
+        { type: "verse", number: 166, lines: ["[On the Day of Resurrection] Those", "Who were followed{59} renounce those", "Who followed them [in disbelief]", "When they practically see the Torment;", "And all the ties between them will be cut", "Asunder;"] },
+        { type: "verse", number: 167, lines: ["And the [deceived] followers will say:", "“If only we had one more chance", "To return [to the worldly life], we would", "Disown them [by declaring ourselves", "Detached from them] as they have", "Disowned us.” Thus, Allāh will show", "Them their deeds which shall be", "The cause of regrets for them, and they", "Can never get out of the Fire, [there", "Is no way out]"] },
+        { type: "divider" },
+      ],
+    },
+    {
+      bookPage: 45,
+      blocks: [
+        { type: "verse", number: 168, lines: ["O, you people! Eat of that which is", "Lawful and good on the earth; and do", "Not follow the footsteps of Satan,", "Verily, he is to you an obvious enemy;"] },
+        { type: "verse", number: 169, lines: ["For, he orders you to do only what", "Is evil and sinful and [makes you] say", "Against Allāh what you have no", "Knowledge of."] },
+        { type: "verse", number: 170, lines: ["And when it is said to them{60}: “Follow", "What Allāh has sent down” They say:", "“No! We will follow only the ways of our", "Fathers.” Even though their forefathers", "Were void of wisdom, nor were they", "Guided aright?"] },
+        { type: "verse", number: 171, lines: ["The parable of guiding the disbelievers", "Can be compared to him who shouts to", "An animal that hears nothing but calls", "And cries: They are deaf, dumb, and", "Blind; thus, they do not understand", "Anything, due to their shortage of", "Wisdom."] },
+        { type: "verse", number: 172, lines: ["O, you who believe! Eat of the lawful", "Things that We have provided for you", "And be grateful to Allāh, if you indeed", "Are Monotheists and worship Him", "Only;"] },
+        { type: "verse", number: 173, continues: true, lines: ["Allāh has only forbidden to you flesh of", "Dead animals and blood and flesh"] },
+      ],
+    },
+    {
+      bookPage: 46,
+      blocks: [
+        { type: "verse", number: 173, continued: true, lines: ["Of the swine, and that which is", "Slaughtered without mentioning", "Allāh’s Name while slaughtering; but", "If one is forced by necessity{61} without", "Willful disobedience or intention of", "Transgressing the due limits, there is", "No sin on him. Truly, Allāh is", "The Merciful Forgiving."] },
+        { type: "verse", number: 174, lines: ["Verily, those who conceal part of what", "Allāh has sent down of the Scripture,{62}", "And purchase a small gain [of worldly", "Things] therewith, they send into their", "Bellies nothing but fire; Allāh will not", "Speak to them on the Day of", "Resurrection; nor purify them [by His", "Forgiveness]; and theirs will be a", "Painful Torment;"] },
+        { type: "verse", number: 175, lines: ["They are the ones who have purchased", "Wrongdoing at the price of Guidance", "And [have purchased] Torment at", "The price of Forgiveness; so how", "Daring they are in bearing the Fire!"] },
+        { type: "verse", number: 176, lines: ["That is because Allāh has sent down", "The [Holy] Book in Truth; and verily,", "Those who dispute as regards", "The Book, they are in a wide schism,", "Far from the Truth."] },
+        { type: "divider" },
+      ],
+    },
+    {
+      bookPage: 47,
+      blocks: [
+        { type: "verse", number: 177, lines: ["It is not [the only symbol of]", "Righteousness that you turn your faces", "Towards the East or to the West [in", "Prayer] but true righteousness is", "To believe in Allāh, and the Day of", "Judgement, and the Angels and", "The Book and the Messengers and", "Also to spend one’s wealth [in the Way", "Of Allāh], despite of love for it, [by", "Giving it] to the kinsmen, to", "The orphans, and to the needy, and to", "The wayfarers, and to the poor who", "Beg, and to ransom the slaves, and", "To perform prayers, to pay alms; and", "Those who fulfill their promises when", "They make them and those who are", "Patient in extreme poverty and ailment", "And at the time of war, such are", "The people who are truthful [in their", "Claims regarding their belief in Allāh", "And obeying His Commands] and they", "Are indeed the pious."] },
+        { type: "verse", number: 178, continues: true, lines: ["O, you who believe! The law of", "Retaliation in punishment is", "Prescribed for you in cases of murder:", "The freeman for the freeman, the slave", "For the slave and the female for", "The female. But if the heirs of", "The killed person forgive the killer,{63}", "Then the relatives [of the killed person]", "Should demand blood-money in a", "Reasonable manner, and the killer", "Must pay with handsome gratitude; this"] },
+      ],
+    },
+    {
+      bookPage: 48,
+      blocks: [
+        { type: "verse", number: 178, continued: true, lines: ["Is a lightening [in punishment] as", "Well as a Mercy from your", "Creator&Nurturer; so after this,", "Whoever transgresses the limits,", "[Makes new claims or attempts the life", "Of the killer], he shall have a painful", "Torment;"] },
+        { type: "verse", number: 179, lines: ["O, you men of reason! In the law of", "Retaliation,{64} there is [security of] life", "For you [as a member of society] so", "That you may become pious."] },
+        { type: "divider" },
+        { type: "verse", number: 180, lines: ["When death approaches any of you [and", "The symptoms are observed] if he is", "Wealthy and leaves behind some goods,", "He should draw up a will to parents", "And his close relatives in their", "Favour [or for any charity usage] this is", "A duty upon the pious;"] },
+        { type: "verse", number: 181, lines: ["So whosoever alters the will after he", "Has heard it, the guilt shall be on him", "Who made the change. Truly, Allāh is", "The Knowing Hearer;"] },
+        { type: "verse", number: 182, continues: true, lines: ["But, if anyone fears partiality or", "Wrongdoing on the part of", "The testator, and makes peace between"] },
+      ],
+    },
+    {
+      bookPage: 49,
+      blocks: [
+        { type: "verse", number: 182, continued: true, lines: ["[The parties concerned], there is no", "Blame on him. Truly, Allāh is", "The Merciful Forgiving;"] },
+        { type: "divider" },
+        { type: "verse", number: 183, lines: ["O, you who believe! Fasting", "Is Decreed for you as it was Decreed", "For those before you, so that you may", "Become pious [through self-restraint];"] },
+        { type: "verse", number: 184, lines: ["You should fast for a fixed number of", "Days;{65} but if any of you is ill or on a", "Journey, the same number [he should", "Fast] from other days; and those who", "Are hardly able to fast [due to old age", "Or illness] they may effect a", "Redemption by feeding a poor person.", "And whoever of his own free will", "Performs a good deed, it is better", "For him; and [of course] fasting is", "Better for you if you but knew,", "[The benefit of fasting]"] },
+        { type: "verse", number: 185, continues: true, lines: ["Ramezān is the month in which", "Was revealed the Holy Qur’ān,", "Which is a Guidance for mankind and", "Which bears Clear proofs and", "Explanations for the Guidance and", "Which stands as Forqān, [i.e., a", "Criterion between Truth and", "Falsehood]; so whoever of you who is", "Present at his home, he should fast"] },
+      ],
+    },
+    {
+      bookPage: 50,
+      blocks: [
+        { type: "verse", number: 185, continued: true, lines: ["Therein and whosoever on a journey", "Or ill, he should fast the same", "Number of other days; Allāh intends", "For you ease, He does not intend", "For you hardship. You must complete", "The prescribed number of days; and", "Glorify Allāh’s Greatness for His", "Having guided you and you should be", "Thankful to Allāh for His Favour."] },
+        { type: "verse", number: 186, lines: ["And when My obedient worshippers", "Ask you [O, Messenger!], concerning", "Me, then [answer them on My behalf]:", "“I [the Owner of Glory] am indeed near", "To them; I respond to the invocation", "Of the supplicant when he calls on Me,", "So they should obey My Call and", "Believe in Me, so that they may be led", "Aright.”"] },
+        { type: "verse", number: 187, continues: true, lines: ["It is lawful for you to have physical", "Relations with your wives on the night", "Of the fasts; they are your garments and", "You are their garments: [Being close", "To each other as well as covering up", "Each other’s faults.] Allāh did know", "That you were betraying yourselves,{66} so", "He accepted your repentance and", "Forgave you. From now, you can", "Associate with them and seek what", "Allāh has prescribed for you. And [also]", "Eat and drink until the white thread of", "The light of the dawn appears to you", "Distinct from the black thread of", "The night; then complete your fast till"] },
+      ],
+    },
+    {
+      bookPage: 51,
+      blocks: [
+        { type: "verse", number: 187, continued: true, lines: ["The nightfall. And do not associate", "With your wives while you are", "Confining yourselves in a mosque [for", "Prayers and invocations]; these are", "The limits Ordained by Allāh, so even", "Do not draw near [the thought of]", "Violating them. Thus, does Allāh", "Make His Words of Revelation clear to", "Mankind, [detailed and well explained],", "So that they may become pious."] },
+        { type: "verse", number: 188, lines: ["Do not consume one another’s property", "Unjustly{67} nor use it as bribe to", "The judges that you may consume a", "Part of the property of others", "Wrongfully while knowingly."] },
+        { type: "divider" },
+        { type: "verse", number: 189, lines: ["They ask you [O, Messenger!]", "Concerning the phases of the new", "Moons. Say: “They are calendars", "To show fixed periods of time for", "[The daily life of] the people and for", "The Hajj pilgrimage as well.” It is not", "Proper and virtue that you should", "Enter your houses through the back-", "Doors,{68} but the righteous  are those", "Who enter the houses through", "The front doors. And fear from", "The disobedience of Allāh’s Commands", "So that you may attain salvation."] },
+      ],
+    },
+    {
+      bookPage: 52,
+      blocks: [
+        { type: "verse", number: 190, lines: ["And fight in the Way of Allāh [against]", "Those who fight you, but do not", "Exceed the limits; for verily, Allāh", "Does not like the transgressors;"] },
+        { type: "verse", number: 191, lines: ["And kill them wherever you get hold of", "Them{69} and drive them out from where", "They have driven you out; since the evil", "Of disbelief and polytheism is more", "Grievous than killing;{70} but do not", "Fight them at the Sacred Mosque", "Unless they fight with you therein,", "[And you be in a defence position], so", "If they fight with you there, kill", "Them; such is the recompense of", "The disbelievers;"] },
+        { type: "verse", number: 192, lines: ["But if they stop, then [forgive them]", "Verily, Allāh is the Merciful Forgiving;"] },
+        { type: "verse", number: 193, lines: ["And fight them until the evil of", "Disbelief and polytheism is rooted up", "And Allāh’s Religion governs over all,", "But if they desist, then there should", "Be no aggression, save against", "The aggressors."] },
+        { type: "verse", number: 194, continues: true, lines: ["The Sacred Month for the Sacred", "Month, and for the prohibited things,", "There is a law of retaliation: Then,", "Whoever commits aggression against", "You, react you likewise against him"] },
+      ],
+    },
+    {
+      bookPage: 53,
+      blocks: [
+        { type: "verse", number: 194, continued: true, lines: ["[Retaliate in the same manner], and", "Fear from the disobedience of Allāh’s", "Commands, and know that Allāh is", "The Supporter of the pious."] },
+        { type: "verse", number: 195, lines: ["And spend in the Way of Allāh [for", "Providing war equipment] and do not", "Throw yourselves into destruction [by", "Not spending your wealth in the Path", "Of Allāh.] And do good; truly, Allāh", "Is Affectionate to the good-doers."] },
+        { type: "divider" },
+        { type: "verse", number: 196, continues: true, lines: ["And complete the pilgrimage of Hajj", "And ‘Umrah as the Rituals of Allāh’s", "Way. If you are prevented from", "Completing them [fearing the enemy", "Or illness], then send an offering for", "Sacrifice: [a sheep, a cow or a camel]", "Such as you can afford [or find]", "And do not shave your head until your", "Offering reaches its place. And if any", "Of you is ill, or has an ailment in his", "Scalp [which shaving is prescribed] he", "Should in compensation either fast, or", "Feed the poor, or offer sacrifice. But", "When the Pilgrim is secure [from", "The enemy or illness], then whoever", "Performs Hajj following ‘Umrah, he", "Must make an offering easily available", "[To him], but he who is not able to find", "Any offering, he should fast three", "Days during the Hajj and seven days,", "After his return [to his home], making", "Ten days complete. This is for him"] },
+      ],
+    },
+    {
+      bookPage: 54,
+      blocks: [
+        { type: "verse", number: 196, continued: true, lines: ["Whose household does not live near", "The Sacred Mosque.{71} Fear from", "The disobedience of Allāh’s Commands", "And know that Allāh is the Severe", "Retributing."] },
+        { type: "verse", number: 197, lines: ["The Hajj [pilgrimage] is being", "Performed in the months known to all", "Whosoever then intends to perform", "The pilgrimage, then he should not", "Have sexual relations nor commit sin,", "Nor quarrelling during the pilgrimage,", "And whatever good you do, [be sure]", "Allāh knows it; so take a provision", "[With you] and verily, the best", "Provision is piety, so fear from", "The disobedience of Me, [your Creator]", "O, you men of wisdom!"] },
+        { type: "verse", number: 198, lines: ["It shall be no guilt on your part,", "If you seek bounty{72} from your", "Creator&Nurture; then when you leave", "‘Arafāt,{73} remember Allāh [by repeating", "The Remembrance of thanksgiving] at", "Mash’ar- Al-Harām,{74} as He has guided", "You, though you were of those who", "Had gone astray before;"] },
+      ],
+    },
+    {
+      bookPage: 55,
+      blocks: [
+        { type: "verse", number: 199, lines: ["Then when you hurry down from", "‘Arafāt, depart from the same place", "Where all the people depart [without", "Any distinction regarding your rank],{75}", "And beg Allāh for His Forgiveness.", "Truly, Allāh is the Merciful Forgiving;"] },
+        { type: "verse", number: 200, lines: ["So when you have performed your rites,", "Remember Allāh as you used to", "Remember your forefathers{76} rather with a", "More intense Remembrance [thanking", "Allāh for the blessing of His Guidance].", "Of men are those who say: “O, our", "Creator&Nurturer! Give us of Your", "Bounty in this world” and such people", "Will have no portion in the Hereafter;"] },
+        { type: "verse", number: 201, lines: ["And among them, there are some who", "Say: “O, our Creator&Nurturer! Grant", "Us good in this world and in", "The Hereafter; and [out of Your Favour", "And by Your Guidance] save us from", "The Torment of the Fire.”"] },
+        { type: "verse", number: 202, lines: ["For them, there will be alloted a", "Portion of what they have earned. [So", "They benefit from their intelligent", "Invocations]; verily, Allāh is", "The Supreme-Swift Reckoner."] },
+      ],
+    },
+    {
+      bookPage: 56,
+      blocks: [
+        { type: "verse", number: 203, lines: ["And invoke to Allāh’s Remembrance", "During the appointed days,{77} but", "Whosoever hastens to leave in two", "Days, there is no sin on him and", "Whosoever delays, there is no sin on", "Him [either], provided that he does his", "Duty and he is pious. And fear from", "The disobedience of Allāh’s", "Commands; and know that you", "[People] will be surely gathered to", "Him."] },
+        { type: "divider" },
+        { type: "verse", number: 204, lines: ["[O, Messenger!] And of men, there", "Is he whose speech may amaze  you", "Concerning the life of this world; and", "He takes Allāh to witness as what is in", "His heart; but [despite his pretentions]", "He is the most contentious of", "The opponents [of you and Islām];"] },
+        { type: "verse", number: 205, lines: ["And if he holds authority, his effort", "In the land is but to make corruption", "Therein and to destroy the tilth and", "The cattle [of the Muslims]. And [since]", "Allāh dislikes corruption, [he will not", "Succeed];"] },
+        { type: "verse", number: 206, continues: true, lines: ["And when it is said to him: “Fear", "Allāh!” This increases his stubbornness,", "And his vainful pride drives him to"] },
+      ],
+    },
+    {
+      bookPage: 57,
+      blocks: [
+        { type: "verse", number: 206, continued: true, lines: ["More sinful deeds; so enough for him", "Is the Hell; and worst indeed is that", "Place to rest in it!"] },
+        { type: "verse", number: 207, lines: ["And from among men there is one{78} who", "Sells his life, seeking the Pleasure of", "Allāh; and verily, Allāh is kind and", "Compassionate to His obedient", "Worshippers."] },
+        { type: "verse", number: 208, lines: ["O, you who believe! Enter you all into", "Submission to Allāh [in peace and", "Without dispute] and do not follow", "The footsteps of Satan; for verily, he", "Is to you an evident enemy;"] },
+        { type: "verse", number: 209, lines: ["But, if you slide back, after all that", "Has come to you of the Explicit", "Revelations and Signs, then know that", "Allāh is the Invincible Mighty Decreer."] },
+        { type: "verse", number: 210, lines: ["Do the disbelievers expect anything", "Other than that, Allāh should come to", "Them in the canopies of clouds and", "Also the Angels, in which case", "The matter is decreed away?{79} And to", "Allāh all matters are returned."] },
+        { type: "verse", number: 211, continues: true, lines: ["[O, Messenger!] Ask the Children of"] },
+      ],
+    },
+    {
+      bookPage: 58,
+      blocks: [
+        { type: "verse", number: 211, continued: true, lines: ["Isrāīl how many of Clear Signs and", "Miracles We bestowed upon them?", "And whosoever changes the blessings", "Of Allāh for the opposite after it has", "Come to him, then [he will receive", "Torment due to raising Allāh’s Wrath]", "Verily, Allāh is the Severe-Retributing."] },
+        { type: "verse", number: 212, lines: ["The life of this world has appeared", "Attractive to the eyes of those who", "Disbelieve and so they mock at", "The [needy] believers. But those who", "Strive for being pious will be above", "The disbelievers on the Day of", "Judgement; and verily, Allāh bestows", "Sustenance for whom He Wills,", "Without any limit."] },
+        { type: "verse", number: 213, continues: true, lines: ["At the begining,{80} people were one", "Nation; then Allāh sent Messengers", "As Givers of glad-tidings and Warners;", "And sent down [with them] the Book", "With the Truth to judge between men", "In whatever they differed. But", "Those to whom the Scripture was", "Given, after clear proofs had come to", "Them, they differed,{81} out of envy and", "Aggression among themselves. Then", "Allāh by His Will guided those who", "Believed the Truth about which there", "Was dispute. And Allāh does guide,"] },
+      ],
+    },
+    {
+      bookPage: 59,
+      blocks: [
+        { type: "verse", number: 213, continued: true, lines: ["Those whom He Wills, to the Straight", "Path."] },
+        { type: "divider" },
+        { type: "verse", number: 214, lines: ["Do you think that you will enter", "The Paradise without such trials", "[Regarding hardship] as came to those", "Who passed away before you? They", "Were afflicted with severe poverty and", "Ailments; and were so convulsed that", "[Even] the Messenger and those who", "Believed along with him said: “When", "Will come the Aid of Allāh?” [They", "Were stated:] “Surely, Allāh’s Aid", "Is near.”"] },
+        { type: "divider" },
+        { type: "verse", number: 215, lines: ["They ask you [O, Messenger!]", "Concerning what they should spend [in", "The Way of Allāh], say: “It is good", "Whatever of wealth and properties", "You spend for parents and relatives", "[Who are in need] and orphans and", "The poor who beg and the wayfarers.", "And whatever you do of good deeds", "Verily, Allāh is the Knower of it.”"] },
+        { type: "verse", number: 216, lines: ["Fighting is Ordained upon you though", "It is resented by you; but, [it happens", "That] you resent a thing whereas it is", "Good for you, and perhaps you like", "Something whereas it is evil for you,", "And verily, Allāh knows [what is best]", "While you do not know. [Since Allāh’s", "Knowledge is infinite, but man’s is", "Limited]"] },
+      ],
+    },
+    {
+      bookPage: 60,
+      blocks: [
+        { type: "verse", number: 217, lines: ["They ask you [O, Messenger!] concerning", "Fighting in the Sacred Month. Say:", "“Fighting therein, is a grave sin, but it", "Is a graver sin in Allāh’s Sight", "To prevent mankind from following", "The Path of Allāh; to disbelieving Him;", "To prevent access to the Sacred", "Mosque; and to drive out its", "Inhabitants; and [above all] polytheism", "Is worse than killing. And", "The disbelievers will never cease", "Fighting you, until they turn you", "Back from your religion,{82} if they can.", "And whosoever of you turns back from", "His Faith and dies while disbelieving,", "Then his good deeds [he has done in", "The past] will yield no fruit in this", "World and in the Hereafter, and they", "Will be the inhabitants of the Fire, and", "They will abide therein forever;"] },
+        { type: "verse", number: 218, lines: ["But verily, those who have believed and", "Those who have migrated and have", "Fought and striven hard in the Path of", "Allāh, all these [people] hope for", "Allāh’s Mercy [regarding their past].", "And Allāh is the Merciful", "Forgiving."] },
+        { type: "verse", number: 219, continues: true, lines: ["They ask you [O, Messenger!] concerning", "Intoxicants and gambling, say: “In both", "Of them is a grave sin, although there", "Is some profit for some men in them,", "But the sin of them is graver than their"] },
+      ],
+    },
+    {
+      bookPage: 61,
+      blocks: [
+        { type: "verse", number: 219, continued: true, lines: ["Profit.” And they ask you how much", "They should spend [in charity] say:", "“Whatsoever can be spared and that", "Which is beyond one’s needs.” Thus", "Allāh makes clear to you people", "The Words of Decrees in order", "That you may ponder concerning this", "World and the Hereafter;"] },
+        { type: "verse", number: 220, lines: ["They ask you [O, Messenger!]", "Concerning the orphans, say: “The best", "Thing is to set their affairs right for", "Them; but if you mix your affairs with", "Theirs, then they are your brothers [in", "Religion] and Allāh knows the corrupt", "From the good-doer. And if Allāh had", "Willed he could have surely made it", "Hard for you since verily, Allāh is", "The Invincible Mighty Decreer.”"] },
+        { type: "verse", number: 221, lines: ["And do not marry the idolater women", "Until they believe; a believer slave-", "Woman is definitely better than an", "Idolater woman even though she", "Appeals to you. And do not give [your", "Daughters or relatives under your", "Guardianship] in marriage to", "The idolaters till they believe; a", "Believer slave-man is better than an", "Idolater [free] man even if he pleases", "You; such people invite you to the Fire,", "But Allāh invites you to", "The Paradise and Forgiveness by His", "Leave. And Allāh makes His Words of", "Revelation clear to mankind that they", "May be mindful about the Truth."] },
+      ],
+    },
+    {
+      bookPage: 62,
+      blocks: [
+        { type: "verse", number: 222, lines: ["And they ask you concerning", "Women’s courses, say: “It is a nuisance", "Pollution.” So, keep away from women", "In their courses, and do not approach", "Them until they are clean; but when", "They have purified themselves,you may", "Approach them in a lawful manner.", "Verily, Allāh bestows affection to", "Those who turn to Him in repentance", "And those who purify themselves."] },
+        { type: "verse", number: 223, lines: ["Your wives are as a tilth for you, so", "Come unto your tilth any time you", "Wish [as long as it is an act of natural", "And for preserving generation]; and", "Forward for your souls good deeds,", "[Through good offsprings]. And fear", "From the disobedience of Allāh’s", "Commands and know that you are", "To meet Him [eventually] and", "[O, Messenger] give glad-tidings to", "The believers."] },
+        { type: "divider" },
+        { type: "verse", number: 224, lines: ["[O, you who believe!] Do not make", "Allāh’s [Name] an excuse in your oaths", "For not doing good and acting piously", "Or making peace among mankind.", "Verily, Allāh is the Knowing Hearer;"] },
+        { type: "verse", number: 225, continues: true, lines: ["Allāh will not call you to account for", "That which is not intentional in your", "Oaths, but He will call you to account", "For that which your hearts have", "Intended and Allāh is the Tolerant"] },
+      ],
+    },
+    {
+      bookPage: 63,
+      blocks: [
+        { type: "verse", number: 225, continued: true, lines: ["Forgiving;"] },
+        { type: "verse", number: 226, lines: ["For those who swear to abstain", "From their wives [not to have sexual", "Relation]{83} is Ordained a waiting for", "Four months, then if they return and", "[Change their mind in this period],", "Verily, Allāh is the Merciful Forgiving;"] },
+        { type: "verse", number: 227, lines: ["And if they decide upon divorce [there", "Is no blame on them], then verily,", "Allāh is the Knowing Hearer."] },
+        { type: "verse", number: 228, lines: ["The divorced women should wait [not", "Wedding another man] until three", "Monthly courses, if they believe in", "Allāh and in the Hereafter. It is not", "Lawful for them to conceal what Allāh", "Has created in their wombs [i.e., being", "Pregnant]. And their husbands have", "The greater right to take them back", "During this period, if they wish for", "Reconciliation. And for the women", "Shall be similar rights [over men] in", "Fairness, and men have a grade above", "Women; and Allāh is the Supreme", "Mighty Decreer;"] },
+        { type: "verse", number: 229, continues: true, lines: ["The divorce [shall be lawful] only twice.", "Then you, [the husband] should either", "Keep the wife on reasonable terms or"] },
+      ],
+    },
+    {
+      bookPage: 64,
+      blocks: [
+        { type: "verse", number: 229, continued: true, lines: ["Release her with kindness. And it is not", "Lawful for you to take back marriage-", "Portion or gifts [given by the husband", "To his wife at the time of marriage]", "Except when both fear that they", "Would be unable to keep the limits", "Ordained by Allāh [not to deal with", "Each other on a truthful basis], then", "There is no blame on either of them", "If she gives something to get herself", "Freed [from the wedlock.] These are", "The limits Ordained by Allāh, so do not", "Exceed them and those who exceed the limits,", "Ordained by Allāh, then such are indeed", "The transgressors;"] },
+        { type: "verse", number: 230, lines: ["So if a husband divorces his wife [for", "The third time] he cannot, after that", "Remarry her until she has married", "Another man and has got a divorce", "From him. In that case, there is no", "Blame on either of them if they return", "To each other, provided that they feel", "They can keep the limits Ordained by", "Allāh. Such are the limits that Allāh", "Makes them clear to the men of", "Knowledge and understanding;"] },
+        { type: "verse", number: 231, continues: true, lines: ["And when you have divorced [your]", "Wife and she has fulfilled her", "Prescribed period, either take her back", "On reasonable basis or set her free", "With fairness. But do not retain", "The women to hurt them, or to take", "Steps towards causing loss  or"] },
+      ],
+    },
+    {
+      bookPage: 65,
+      blocks: [
+        { type: "verse", number: 231, continued: true, lines: ["Transgressing against them; and", "Whoever does this, then he has indeed", "Wronged himself. And do not treat", "Allāh’s Words of Revelation as a jest", "[In no ways]; and remember the Grace", "Of Allāh upon you and [remember]", "What He has sent down from", "The Book and Wisdom to admonish", "You thereby. Then fear from", "The disobedience of Allāh’s Commands", "And know that Allāh is the Absolute-", "Knower of all things;"] },
+        { type: "verse", number: 232, lines: ["And when the woman is divorced and", "She has fulfilled her prescribed period", "[Of waiting], do not prevent her [as", "Parents or her guardian] from marrying", "Her [former] husband when they agree", "Among themselves in fairness; this is", "A Decree by which only those among", "You who believe in Allāh and in", "The Hereafter will be admonished by;", "It secures happiness and bars", "The family from corruption. That is", "More virtuous and purer for you;", "Verily, Allāh knows [what is to your", "Advantage], but you do not know."] },
+        { type: "verse", number: 233, continues: true, lines: ["And the mothers shall suckle their", "Children two complete years; if", "The mother desires to complete", "The term of suckling herself, on", "The father shall be her sustenance and", "Her clothing in fairness. No person", "Shall have a burden laid on him", "Greater than he can bear. No mother"] },
+      ],
+    },
+    {
+      bookPage: 66,
+      blocks: [
+        { type: "verse", number: 233, continued: true, lines: ["Shall be treated unfairly on account of", "Her child nor father on account of", "His child. On the father’s heir is", "Incumbent the like of that [which was a", "Duty on the father]; if they both decide", "On weaning [before the due time] by", "Mutual consent, and after", "Consultation, there is no sin on them.", "If you [parents] decide on a foster", "Suckling-mother for your children,", "There is no sin on you, provided that", "You pay her what you agreed on a", "Reasonable basis. And fear from", "The disobedience of Allāh’s Command", "And know that Allāh is the Seer of", "What you do."] },
+        { type: "verse", number: 234, lines: ["And if any of you dies and leaves", "Widows behind, the widows shall wait", "[As regards another marriage] for four", "Months and ten days, then when they", "Have fulfilled their term, there is no", "Sin on you [as fathers or guardians] in", "What they may do with themselves, in a", "Proper way;{84} and verily, Allāh is [fully]", "Aware of whatever you do."] },
+        { type: "verse", number: 235, continues: true, lines: ["And there is no sin on you in indirect", "Proposal of marriage to the widows{85}", "that you may make to women or keep", "[The proposal] concealed within", "Yourselves. Allāh knows what you are", "Going to tell them; but do not make"] },
+      ],
+    },
+    {
+      bookPage: 67,
+      blocks: [
+        { type: "verse", number: 235, continued: true, lines: ["A promise secretly except you speak", "Allusively; and do not resolve on a", "Wedlock until the prescribed term is", "Completed. And know that Allāh", "Knows what is in your hearts, so fear", "From the disobedience of Allāh’s", "Commands; and know that Allāh is", "The Tolerant Forgiving."] },
+        { type: "verse", number: 236, lines: ["There is no sin on you if you divorce a", "Woman while yet you have not", "Touched her nor settled any", "Marriage-portion on her, but present", "Her a suitable gift: The wealthy", "According to his means, and the poor", "According to his means; a gift of a", "Reasonable value is a duty on", "The good-doers;"] },
+        { type: "verse", number: 237, lines: ["And if you divorce [the woman] before", "You have touched her and after you", "Have appointed the marriage-portion,", "Then pay half of that, unless she agrees", "To remit it; or he [the guardian], in", "Whose hands is the marriage tie, agrees", "To remit; and to remit is nearer to", "Piety. And do not forget generosity and", "Grace among yourselves; truly, Allāh is", "The Acute Observer of what you do."] },
+        { type: "divider" },
+        { type: "verse", number: 238, continues: true, lines: ["Be strict in performing prayers,", "[Regularly] and particularly the middle", "Prayer{86}. And stand before Allāh with"] },
+      ],
+    },
+    {
+      bookPage: 68,
+      blocks: [
+        { type: "verse", number: 238, continued: true, lines: ["Complete humbleness and full", "Attention."] },
+        { type: "verse", number: 239, lines: ["And if you fear [an enemy or some", "Danger], then pray on foot or", "Riding, but when you are safe, perform", "The prayer in the manner prescribed", "And remember Allāh [thankfully] as", "He taught you [through the Holy", "Qur’ān and His Messenger] what you", "Did not know."] },
+        { type: "verse", number: 240, lines: ["And those of you who die, leaving", "Behind widows, the Decree is that for", "The widows a year’s maintenance and", "Residence should be provided without", "Turning them out; but if the widows,", "Of their own accord, quit their homes", "There shall be no sin on you,", "[The inheritors] in what they may do", "For themselves in a lawful manner;", "And Allāh is the Supreme Mighty", "Decreer."] },
+        { type: "verse", number: 241, lines: ["And for the divorced women [too]", "Should be means of comfort or a gift", "In fairness, this is a duty on the pious;"] },
+        { type: "verse", number: 242, lines: ["Thus, does Allāh make clear His Words", "Of Revelation to you [for your", "Guidance] in order that you may think", "[Of their importance]"] },
+        { type: "divider" },
+      ],
+    },
+    {
+      bookPage: 69,
+      blocks: [
+        { type: "verse", number: 243, lines: ["[O, Messenger!] Have you considered", "Those who went out from their homes", "For fear of death?{87} And they were in", "Thousands, then Allāh stated to", "Them: “Die you!” [And they died.]", "And thereafter He restored them to", "Life [as an admonitory lesson] verily,", "Allāh is Gracious towards mankind but", "Most of people are not thankful;"] },
+        { type: "verse", number: 244, lines: ["And [O, Muslims!] fight in the Path", "Of Allāh and know that Allāh is", "The Knowing Hearer."] },
+        { type: "verse", number: 245, lines: ["Who is he that will lend Allāh a", "Fair Loan, [by spending in Allāh’s Way", "Out of what He has bestowed on him]", "So that He will multiply it for him", "Many times? Since it is Allāh that", "Restricts or outspreads [the sustenance]", "And to Him you people shall return."] },
+        { type: "divider" },
+        { type: "verse", number: 246, continues: true, lines: ["[O, Messenger!] Have you not thought", "About the dignitaries of the Children of", "Isrāīl after the time of Mūssā? They said", "To their Messenger: “Appoint for us a", "king that under him we may fight", "In Allāh’s Path.” He said: “May it not be", "That if fighting were Ordained on you,", "You would not fight?” They said:", "“How could we refuse to fight in", "The Path of Allāh, while we have"] },
+      ],
+    },
+    {
+      bookPage: 70,
+      blocks: [
+        { type: "verse", number: 246, continued: true, lines: ["Indeed been driven out from our", "Homes and taken away from our", "Children [since they are taken", "Captives]?” But when fighting", "Was Ordained on them, they turned", "Their backs except a few of them; and", "Verily, Allāh knows the transgressors", "Only so well;"] },
+        { type: "verse", number: 247, lines: ["And their Prophet said to them: “Allāh", "Has appointed Tālūt as king over you.”", "They said: “How can he exercise", "Authority over us whereas we are more", "Rightful for it than him since he is not", "Gifted with abundance of wealth", "Either?” He said: “Verily, Allāh has", "Chosen him over you and has increased", "Him abundantly in knowledge and", "Physical strength; and verily, Allāh", "Grants His kingdom to whomever He", "Wills and Allāh is the Knowing-", "Dominion-Bestower.”"] },
+        { type: "verse", number: 248, lines: ["And then their Messenger said to them:", "“Verily, the sign of Tālūt’s kingship", "Shall be the Ark{88} carried by the Angels", "Of Allāh and in which shall be", "The Divine Tranquility from your", "Creator&Nurturer and the remnant of", "What the family of Mūssā and", "The family of Hārūn left behind;", "Verily, therein shall be a sign for you", "If you are [true] believers.”"] },
+      ],
+    },
+    {
+      bookPage: 71,
+      blocks: [
+        { type: "verse", number: 249, lines: ["When Tālūt set out with his army, he", "Said: “Verily, Allāh will try you by a", "Stream: Whoever [of you] drinks from", "It, then he is not of me and whoever", "Does not drink, he is of me save he", "Who drinks a draught with a hollow", "Of his hand.” But they drank from it", "Save a few of them. So when he and", "The believers who were with him", "Crossed the stream, they said: “We", "Have no power against Jālūt and his", "Hosts, this day.” But those who were", "Certain that they shall meet Allāh,{89}", "They said: “How often a small group", "Overcame a big host by Allāh’s", "Command and Allāh is the Supporter", "Of the steadfast and the patient.”"] },
+        { type: "verse", number: 250, lines: ["And when they encountered with Jālūt", "And his hosts, they prayed: “O, our", "Creator&Nurturer! Bestow on us", "Endurance and set our feet firm and", "Help us against the disbelieving", "People!”"] },
+        { type: "verse", number: 251, continues: true, lines: ["Following [their pray] they defeated", "Them by Allāh’s Leave and Dāwūd", "[Who was one of Tālūt’s men] killed", "Jālūt and Allāh gave him,{90}", "The Kingdom and Wisdom and taught", "Him of that which He Willed. And if", "Allāh had not repelled some [corrupt and", "Disobedient people] by others,"] },
+      ],
+    },
+    {
+      bookPage: 72,
+      blocks: [
+        { type: "verse", number: 251, continued: true, lines: ["The earth would have been full of", "Mischief; but Allāh is Gracious to His", "Worshippers."] },
+        { type: "verse", number: 252, lines: ["[O, Messenger!] These Revelations are", "Allāh’s Signs of Power that We recite", "To you in truth; and verily, you are one", "Of Our Messengers;"] },
+        { type: "verse", number: 253, lines: ["Some of these Messengers, We have", "Exalted above the others: Of them are", "Some to whom Allāh spoke directly{91}", "And some He has raised in degrees{92}", "And We gave Īssā, son of Maryam,", "Evident Miracles and confirmed Him", "With the Holy Spirit{93} and if Allāh had so", "Willed, those generations succeeding", "Them would not fight among", "Themselves after [so much] of Signs and", "Miracles that had come to them; but", "They differed and of them there were", "Some who believed and some who", "Disbelieved, and had Allāh so Willed,", "They would not have fought; but Allāh", "Does whatever He Wills."] },
+        { type: "divider" },
+        { type: "verse", number: 254, continues: true, lines: ["O, you who believe! Spend out [to", "The needy], of the Bounty We have", "Provided as sustenance for you", "Before the Day comes wherein there", "Shall be no bargaining nor friendship,"] },
+      ],
+    },
+    {
+      bookPage: 73,
+      blocks: [
+        { type: "verse", number: 254, continued: true, lines: ["Nor intercession. And those who", "Disbelieve they are the self-oppressors", "Indeed."] },
+        { type: "verse", number: 255, lines: ["There is no God but Allāh, the Eternal-", "Live; slumber does not overtake", "Allāh, nor does sleep. To Allāh", "Belongs whatever is in the heavens and", "On the earth. Who dares to intercede", "In Allāh’s Presence without His", "Leave?{94} Allāh Knows what happens to", "The people now and what happens to", "Them in the future; and none of", "Them will ever encompass anything of", "Allāh’s Knowledge except as much", "Allāh Wills. Allāh’s Throne is", "Extended over the heavens and", "The earth; but preserving both of", "Them [at the same time] does not", "Trouble Allāh. And Allāh is", "The Supreme-Exalted Great;"] },
+        { type: "verse", number: 256, lines: ["There is no compulsion in accepting", "Religion, [since] Truth has verily", "Become distinct from Falsehood [in", "The Qur’ān and through", "The Messenger and Miracles]; whoever", "Rejects Satan and believes in Allāh,", "Then indeed he has grasped the firmest", "Handle that will never break off. And", "Allāh is the Knowing Hearer;"] },
+        { type: "verse", number: 257, continues: true, lines: ["Allāh is the Guardian of those who"] },
+      ],
+    },
+    {
+      bookPage: 74,
+      blocks: [
+        { type: "verse", number: 257, continued: true, lines: ["Believe; He takes them out from", "The darkness into the Light; and", "Those who reject Faith, their", "Guardians are the rebels{95} who take", "Them out from the Light into", "The darkness and they will be", "The dwellers of the Hell, therein they", "Shall abide forever."] },
+        { type: "divider" },
+        { type: "verse", number: 258, lines: ["[O, Messenger!] Have you thought", "About him{96} who disputed [out of pride]", "With Ibrāhīm about his", "Creator&Nurturer, though he owned", "Kingdom which had been granted", "To him by Allāh? When Ibrāhīm said:", "“My Creator&Nurturer, is the One", "Who gives life and causes death,” he", "Said: “I [too] give life and cause death.”{97}", "Ibrāhīm said: “Verily, Allāh causes", "The sun to rise from the East; then you", "Cause it to rise from the West.” So", "The disbeliever was utterly", "Confounded. Thus Allāh does not", "Guide the disbelievers;"] },
+        { type: "verse", number: 259, continues: true, lines: ["Or [take] the similitude of the man who", "Passed by a town and it had fallen on", "Its roofs. He pondered: “Oh! How", "Would Allāh ever bring them", "[The people of the town] to life once", "They are dead?” Allāh [the Knowing", "Hearer] caused him to die for a"] },
+      ],
+    },
+    {
+      bookPage: 75,
+      blocks: [
+        { type: "verse", number: 259, continued: true, lines: ["Hundred years; then raised him [again]", "To life. Allāh asked him: “How long", "Did you remain dead?” He said:", "“Perhaps I remained dead a day or part", "Of a day.” Allāh stated: “Nay, you", "Remained dead for a hundred years;", "Look at your food and your drink, they", "Show no change; and look at your", "Donkey! [How it has been decomposed]", "And thus, We have made of you an", "Example of Our Power for the people", "[In order to make them believe in", "The Resurrection Day]; look at", "The bones, [of your donkey!] How We", "bring them together and clothe them", "With flesh.” When the truth was", "Made clear to him, he said [then]:", "“Now I know that Allāh is Powerful", "Over all things.”"] },
+        { type: "verse", number: 260, lines: ["And remind them [O, Messenger!]", "When Ibrāhīm said: “O, my", "Creator&Nurturer! Show me how You", "Give life to the dead?” Allāh stated:", "“What! Do you not [then] believe?” He", "Said: “Yes, but only my heart may be", "at rest.” Allāh stated: “Take four", "Birds, [slaughter them] and cut them", "Into pieces and put a portion of them", "On every mountain; then summon", "Them, and they will [in their original", "Form] come to you in haste.” And", "Know that verily, Allāh is the", "Source-Wisdom Supremepower."] },
+        { type: "divider" },
+      ],
+    },
+    {
+      bookPage: 76,
+      blocks: [
+        { type: "verse", number: 261, lines: ["The similitude of those who spend their", "Wealth in the Path of Allāh is", "The similitude of a grain of corn that", "Grows seven ears, and each ear has a", "Hundred grains. Allāh gives manifold", "Increase to whom He Wills; and", "Allāh is the Knowing-Bounty-", "Increaser;"] },
+        { type: "verse", number: 262, lines: ["Those who spend their wealth in", "The Path of Allāh, and thereafter do", "Not follow it with reproach or injury,", "For them there is the reward with", "Their Creator&Nurturer; and neither", "They shall have any fear, nor they shall", "Grieve;"] },
+        { type: "verse", number: 263, lines: ["A kind word [with the needy] and", "Forgiveness are better than charity that", "Is followed by annoying; [and we should", "Know:] Verily, Allāh is the Forbearing", "Rich [Who bestows bounty with", "Consent to His creatures and Who", "Does not expect any return from", "Them];"] },
+        { type: "verse", number: 264, continues: true, lines: ["O, you who believe! Do not render in", "Vain your charities by reminders of", "Your generosity or by annoying; like a", "Man who spends his wealth to show off", "To people whereas he does not believe", "In Allāh nor in the Last Day; the", "Similitude of such men’s charity is like", "That of a smooth hard rock on which is", "A little dust; as a heavy shower falls", "Upon it, then leaves it just a bare stone,"] },
+      ],
+    },
+    {
+      bookPage: 77,
+      blocks: [
+        { type: "verse", number: 264, continued: true, lines: ["[No use in sowing the seed.] They shall", "Not gain anything of what they have", "Earned [in this world and sow no seed", "For their Hereafter] and Allāh does", "Not guide the disbelieving people;"] },
+        { type: "verse", number: 265, lines: ["And the similitude of those who spend", "Their wealth seeking Allāh’s Pleasure", "And strengthening their own souls", "Is as the similitude of a garden on a", "Height: Heavy rain falls on it and it", "Doubles its yield of harvest; and if", "Heavy rain does not fall upon it, then a", "Gentle rain is [also] sufficient. And", "Allāh is the Seer of all that you people", "Do;"] },
+        { type: "verse", number: 266, lines: ["Would anyone of you wish to have a", "Garden of date-palms and vines with", "Streams flowing in it{98} and all", "Kinds of fruits grow therein. But he", "Is stricken with old age and his", "Children are weak [not able to look", "After themselves]; then suddenly", "The garden is stricken down by a fiery", "Whirlwind, and gets burnt up?{99} Thus,", "Does Allāh make clear to you His Words", "Of Revelation, so that you may ponder;"] },
+        { type: "verse", number: 267, continues: true, lines: ["O, you who believe! Spend out [in", "The Way of Allāh] of the good and"] },
+      ],
+    },
+    {
+      bookPage: 78,
+      blocks: [
+        { type: "verse", number: 267, continued: true, lines: ["Pure things which you have earned", "[Lawfully], and from which We have", "Brought out for you from the earth.", "And do not aim to spend from that", "Which is bad and worthless, whereas", "You would not accept it [yourself],", "Unless you overlook it; and know", "That Allāh is the Praiseworthy Rich;{100}"] },
+        { type: "verse", number: 268, lines: ["Satan threatens you with poverty", "[To prevent you from spending in", "Charity]; and orders you to commit sin;", "Whereas Allāh promises you His", "Bounty and Forgiveness, [by enjoining", "To spend in charity]; and Allāh is", "The Knowing-Bounty-Increaser."] },
+        { type: "verse", number: 269, lines: ["[So] Allāh grants [the blessing of]", "Wisdom to whomsoever He Wills.", "Indeed he who has been granted", "Wisdom, has been granted blessing in", "Abundance; but none is reminded, save", "Those men of wisdom."] },
+        { type: "verse", number: 270, lines: ["And whatever you spend in charity, or", "Whatever vow you make, surely Allāh", "Knows it; but for the wrongdoers [who", "Avoid spending in Allāh’s Way] there", "Shall be no helpers for them [against", "Allāh’s Punishment];"] },
+        { type: "verse", number: 271, continues: true, lines: ["And if you spend [in charity] openly,"] },
+      ],
+    },
+    {
+      bookPage: 79,
+      blocks: [
+        { type: "verse", number: 271, continued: true, lines: ["[Even so] it is good; but if you conceal", "It when you give it to the poor, that is", "Better for you; [by this manner] some of", "Your sins will be forgiven [since] Allāh", "Is the Well-Aware of all that you do;"] },
+        { type: "verse", number: 272, lines: ["[O, Messenger!] You are not", "Responsible for their guidance;{101} but", "Allāh guides aright whomsoever He", "Wills. And whatever good things you", "Spend [in charity] it shall be for your", "Own souls; but do not spend in", "Charity except for seeking the Pleasure", "Of Allāh. And whatever good you", "Spend shall be repaid to you in full", "[Here and in the other world]; and you", "Shall not be treated unjustly [and shall", "Suffer no loss];"] },
+        { type: "verse", number: 273, lines: ["[Charity is] For those poor who are", "Besieged in the Path of Allāh and", "Thereby prevented from travelling and", "Cannot move about in the land [for", "Trade or work.] The one who does not", "Know them, considers them to be rich", "For their self-control [from begging;]", "You can recognize them by their", "Behaviour: They do not beg of men", "Importunately [despite their need.]", "And whatever of good things you", "Give in charity, verily, Allāh is", "The Knower of it;"] },
+      ],
+    },
+    {
+      bookPage: 80,
+      blocks: [
+        { type: "verse", number: 274, lines: ["Those who spend [in charity] of their", "Wealth by night and [by] day, secretly", "And openly, for them shall be their", "Reward with their Creator&Nurturer;", "On them shall be no fear, nor shall", "They grieve."] },
+        { type: "divider" },
+        { type: "verse", number: 275, lines: ["Those who swallow usury will not stand", "[On the Day of Resurrection] except", "Like the standing of a person touched", "By Satan, therefore led to insanity and", "Panic; that is because they used", "To say: “Usury, is only like trading.”", "Whereas Allāh has permitted trading", "And forbidden usury; so whosoever", "Receives admonition from his", "Creator&Nurturer, and stops", "Swallowing usury shall not be punished", "For the past{102} and his case is with", "Allāh [to judge.] But whoever", "Returns to usury after this Decree,", "Such are the dwellers of the Fire; they", "Will abide therein forever;"] },
+        { type: "verse", number: 276, lines: ["Allāh will deprive usury of any blessing", "And will increase blessing for deeds of", "Charity; and Allāh does not like any", "Ungrateful sinner;"] },
+        { type: "verse", number: 277, continues: true, lines: ["Verily, those who believed and did", "Righteous deeds and performed their", "Prayers regularly and paid the alms,", "They will have their reward with their"] },
+      ],
+    },
+    {
+      bookPage: 81,
+      blocks: [
+        { type: "verse", number: 277, continued: true, lines: ["Creator&Nurturer; neither shall they", "Have any fear nor they shall grieve."] },
+        { type: "verse", number: 278, lines: ["O, you who believe! Fear from", "The disobedience of Allāh’s Command", "And give up what remains [due to you]", "From usury, if you are believers;"] },
+        { type: "verse", number: 279, lines: ["If you do not give up, then you have", "Involved yourselves in a war against", "Allāh and His Messenger; but if you", "Repent, you shall have your capital;", "Neither you deal unjustly [with others]", "And nor will you be dealt with unjustly;"] },
+        { type: "verse", number: 280, lines: ["And if the debtor is in straitness, then", "Grant him time till it is easy for him", "To repay; but if he has no money you", "Remit it by way of charity; that is", "Better for you if you only knew;"] },
+        { type: "verse", number: 281, lines: ["And be afraid of the Day when you", "Shall be brought back to Allāh; then", "Every person shall be paid in full what", "He has earned, and none shall be", "Dealt with unjustly."] },
+        { type: "divider" },
+        { type: "verse", number: 282, continues: true, lines: ["O, you who believe! When you contract", "A debt for a fixed term, then write it", "Down and let a scribe write it down", "Between you justly. And the scribe", "Should not refuse to write, as to what"] },
+      ],
+    },
+    {
+      bookPage: 82,
+      blocks: [
+        { type: "verse", number: 282, continued: true, continues: true, lines: ["Allāh has taught him. So let him{103} write", "And let the debtor dictate; and he must", "Fear Allāh, his Creator&Nurturer; and", "Diminish not anything of what he", "Owes. If he who owes, suffers from", "Mental problem or he is weak or", "Unable to dictate himself, then let his", "Guardian dictate justly. And call", "To witness, two witnesses from among", "Your men and if there is not two men,", "Then call a man and two women of", "Those you approve of as witnesses, so", "That if one of the two women forgets,", "The second one of the two may remind", "The other; and the witnesses should", "Not refuse to witness when they are", "Called on [for evidence.] You should", "Not become weary of writing it down,", "Whether small transaction or big, with", "Its fixed term; this procedure is", "The most equitable with Allāh, more", "Solid as evidence, and more convenient", "To prevent doubt among yourselves. In", "Case it is a present transaction of", "Trade in which you give and take", "Between yourselves there is no blame", "On you if you do not write it down,", "Nevertheless, take witnesses when you", "Make a commercial contract, but do", "Not let either the scribe or the witness", "Be pressed or threatened; and if you do", "[So] verily, it will be regarded as", "Disobedience [from Allāh’s Cammand]", "From your side; and fear from"] },
+      ],
+    },
+    {
+      bookPage: 83,
+      blocks: [
+        { type: "verse", number: 282, continued: true, lines: ["The disobedience of Allāh’s Commands.", "Allāh is the One Who teaches you all;", "And Allāh is the Absolute Knower of", "Everything;"] },
+        { type: "verse", number: 283, lines: ["And if you are on a journey and cannot", "Find a scribe, then take a pledge with", "Possession; but if one of you trusts", "The other [can do without taking", "Pledge], then the trustee should fulfill", "His trust and return the entrusted", "Faithfully; and he should fear", "Allāh, his Creator&Nurturer. And [you", "People] do not conceal testimony; and", "Whosoever conceals it, then surely his", "Heart is sinful. And Allāh is", "Well Aware of all that you do;"] },
+        { type: "verse", number: 284, lines: ["To Allāh belongs all that is in", "The heavens and on the earth. And", "Whether you make known what is in", "Your hearts or hide it, Allāh will call", "You to account for it and then He", "Will forgive whomsoever He Wills", "And He will punish whomsoever He", "Wills.{104} And verily, Allāh is Powerful", "Over all things."] },
+        { type: "divider" },
+        { type: "verse", number: 285, continues: true, lines: ["The Messenger believes in what has", "Come down to him from his", "Creator&Nurturer and so do", "The believers; all of them believe"] },
+      ],
+    },
+    {
+      bookPage: 84,
+      blocks: [
+        { type: "verse", number: 285, continued: true, lines: ["In Allāh, in His Angels, in His", "Books and in His Messengers, [and", "They say:] “We consider no", "Separation between one another of", "Allāh’s Messengers.” [They said]:“[O, our", "Creator&Nurturer!] We heard [Your", "Commandment] and we obeyed. O, our", "Creator&Nurturer! We beg Your", "Forgiveness and [we know that] to You", "Is the return of us.”"] },
+        { type: "verse", number: 286, lines: ["Allāh does not put a task on a", "Person beyond his ability. Man gets", "Reward for that [good] which he has", "Done and he is punished for that [evil]", "Which he has done. [The believers", "Pray:] “O, our Creator&Nurturer!", "Punish us not if we forget or fall into", "Error. O, our Creator&Nurturer! Lay", "Not on us a burden like that which", "You did lay on those before us{105}", "[Due to their disobedience]. O, our", "Creator&Nurturer! Lay not on us a", "Burden greater than we have strength", "To bear; pardon us and grant us", "Forgiveness. O, our Creator&Nurturer!", "Have Mercy on us; You are our", "Guardian; so render us victorious over", "The disbelievers.”"] },
+      ],
+    },
   ],
   footnotes: [
     {
@@ -522,6 +928,55 @@ const surah: SurahData = {
     { id: 54, blocks: [{ kind: "p", text: "The Messenger (S.A)" }] },
     { id: 55, blocks: [{ kind: "p", text: "Masjed-al-Harām" }] },
     { id: 56, blocks: [{ kind: "p", text: "Some people of the Scripture, before the change of the Qiblah kept saying: “If Muslims’ religion is above ours, why should they perform prayers towards our Qiblah?”" }] },
+    { id: 57, blocks: [{ kind: "p", text: "Because man’s mind is not capable to perceive the Unseen and the spiritual life in the Paradise." }] },
+    { id: 58, blocks: [{ kind: "p", text: "Ibrāhīm, though in his old age was bestowed a son by Allāh’s Will. Since his older wife, Sārah could not stand the baby and his mother, Ibrāhīm took them to Makkah, then a bewildered desert; and prayed for them to Allāh for granting them of His Bounties [14:37]. After they were left alone, Hājjar fell sick and had no milk to suckle her baby,they were thirsty; in order to abate their thirst, she started running to and fro between Safā and Marwah. When they were about to lose their lives a spring, now known, Zamzam Spring, appeared from under her foot and saved the life of Hājjar and her son who was to be a Messenger of Allāh. Since in the Time of Ignorance, two idols named Usāf and Nā-ellah were put on the two low mountains of Safā and Marwah, the Muslims resented to get near them, so this Word of Revelation was sent down to the Messenger to state there is “no blame” to go to Safā and Marwah and also to remind the pilgrims of the event of purification of that erea through creation of “Zamzam Spring” by Allāh, the Merciful Beneficent." }] },
+    { id: 59, blocks: [{ kind: "p", text: "The ringleaders of the disbelief" }] },
+    { id: 60, blocks: [{ kind: "p", text: "The pagans" }] },
+    { id: 61, blocks: [{ kind: "p", text: "Hunger" }] },
+    { id: 62, blocks: [{ kind: "p", text: "Regarding the Appearance of the Messenger (S.A) as written in the Taurāt" }] },
+    { id: 63, blocks: [{ kind: "p", text: "By accepting the blood-money in an intentional murder" }] },
+    { id: 64, blocks: [{ kind: "p", text: "In the Decree of Retaliation, individual and social security has been devised by Allāh, the Source Wisdom Mighty; for unless those who are guilty of homicide are doomed to punishment no one can live safely. In the Time of Ignorance, on one hand, man-slaughtering did not receive recompense by law, and on the other hand, against one intentional murder, several lives of the relatives or the whole family of the killer had to pay for the revenge." }] },
+    { id: 65, blocks: [{ kind: "p", text: "The whole month of Ramezān" }] },
+    { id: 66, blocks: [{ kind: "p", text: "Holding physical association was forbidden before this Decree and therefore it was considered as a sin, for those who did it." }] },
+    { id: 67, blocks: [{ kind: "p", text: "In any illegal way" }] },
+    { id: 68, blocks: [{ kind: "p", text: "Following the old manner, Arabs out of superstition used to enter their houses through the back-door while in pilgrim garment." }] },
+    { id: 69, blocks: [{ kind: "p", text: "The polytheists and the armed idolators" }] },
+    { id: 70, blocks: [{ kind: "p", text: "Fitnah means mischief-making; here it signifies disbelief and polytheism, since this Word of Revelation ends stating: “Such is the recompense of the disbelievers!”" }] },
+    { id: 71, blocks: [{ kind: "p", text: "None resident of Makkah City" }] },
+    { id: 72, blocks: [{ kind: "p", text: "Trading during the pilgrimage" }] },
+    { id: 73, blocks: [{ kind: "p", text: "A place near Makkah City" }] },
+    { id: 74, blocks: [{ kind: "p", text: "A place known as Mozdalefah near Makkah City, where pilgrims have to stop and stay one night on return from ‘Arafāt." }] },
+    { id: 75, blocks: [{ kind: "p", text: "The affluent of the Quraish, out of arrogance, used to stay at Muzdalefah, to avoid mixing with the crowd by going to the plain of ‘Arafāt. They are reminded of the ‘Āyat 49:13 which Allāh, the Almighty states: “The most honourable of you are the most pious of you.”" }] },
+    { id: 76, blocks: [{ kind: "p", text: "At the Time of Ignorance, Arabs used to honour their ancestors at the end of their pilgrimage." }] },
+    { id: 77, blocks: [{ kind: "p", text: "11th, 12th and 13th of Zelhajjah, following the Day of Sacrifice are called the Days of Tashrīqh, when the pilgrims stay on in the valley of Minā for prayer and praise; it is optional for them to perform the due rituals in two days rather than three days." }] },
+    { id: 78, blocks: [{ kind: "p", text: "Reference is to Imām Ali (A.S) who risked his life to save the Holy Messenger’s life on the night of Migration from Makkah City, by sleeping in the Holy Messenger’s bed. So the conspiracy of the pagans of Makkah who had planned to kill the Messenger of Islām by sowrds-men of different tribes failed by Allāh’s Will." }] },
+    { id: 79, blocks: [{ kind: "p", text: "Like the pagans and the Jews of the past who asked for visiting Allāh manifestly and they were destroyed, thereupon." }] },
+    { id: 80, blocks: [{ kind: "p", text: "In the primitive communities, following ‘Ādam’s creation, people were directed by their inner nature. Due to the growth of population, laws and regulations were demanded to settle the dispute raised among men, so Allāh sent down Messengers and Books of Religion." }] },
+    { id: 81, blocks: [{ kind: "p", text: "Some of Jewish rabbis" }] },
+    { id: 82, blocks: [{ kind: "p", text: "Islāmic Monotheism" }] },
+    { id: 83, blocks: [{ kind: "p", text: "In the Time of Ignorance, if a man did not like his wife, he would swear that he would not have any physical relation with her; upon this custom which was called Īelāa, the wife was held in suspense: She neither had a husband nor could get a divorce and marry some one else. By this Decree of Islamic law an end was put to such unfair selfishness towards women." }] },
+    { id: 84, blocks: [{ kind: "p", text: "Regarding new marriage" }] },
+    { id: 85, blocks: [{ kind: "p", text: "Before completion of the waiting term" }] },
+    { id: 86, blocks: [{ kind: "p", text: "The Middle Prayer, according to the majority of authorities is Noon prayer, which is usualy neglected because of men’s occupations and daily affairs." }] },
+    { id: 87, blocks: [{ kind: "p", text: "Some illness was spread among the people of the city which was regarded as their Divine Punishment, because they had refused to fight in the Path of Allāh." }] },
+    { id: 88, blocks: [{ kind: "p", text: "The Ark was remnant of the wooden box which Mūssā’s mother, by Allāh’s Command, put him inside it and threw it to the sea. After Mūssā was raised up as Prophet, he deposited the Tablets which Allāh had bestowed to him, in the wooden box." }] },
+    { id: 89, blocks: [{ kind: "p", text: "Those who believed in the Hereafter." }] },
+    { id: 90, blocks: [{ kind: "p", text: "Dāwūd" }] },
+    { id: 91, blocks: [{ kind: "p", text: "Mūssā" }] },
+    { id: 92, blocks: [{ kind: "p", text: "The Messenger of Islām was not sent only to a particular folk or group but he was bestowed to the nations of the world as a Grace from Allāh (21:107)" }] },
+    { id: 93, blocks: [{ kind: "p", text: "Jibrāīl" }] },
+    { id: 94, blocks: [{ kind: "p", text: "Even the Prophets are not allowed to intercede save by Allāh’s Permission, whereas the idolaters believed that their idols can intercede for them." }] },
+    { id: 95, blocks: [{ kind: "p", text: "Satan and false deities" }] },
+    { id: 96, blocks: [{ kind: "p", text: "Namroud, the ruler of Ibrāhīm’s time" }] },
+    { id: 97, blocks: [{ kind: "p", text: "To prove his claim he sent for two prisoners, ordered one to be killed and freed the other one." }] },
+    { id: 98, blocks: [{ kind: "p", text: "The first meaning of Taht is under but it also means: in, on, down, downstairs; yet almost all translators have chosen beneath or underneath, whereas a stream running underneath of a garden may ruin the whole land!" }] },
+    { id: 99, blocks: [{ kind: "p", text: "Such is the similitude of those who are not willing to spend in Allāh’s Path." }] },
+    { id: 100, blocks: [{ kind: "p", text: "And man has to follow Allāh’s Will and Allāh’s Divine Attributes as primary models in his own self- cultivation: Thus a rich person gains Allāh’s Pleasure if moral wise he is praiseworthy, since Allāh is the Praiseworthy Rich. (For further explanation, see introduction)" }] },
+    { id: 101, blocks: [{ kind: "p", text: "Guiding the disbelievers" }] },
+    { id: 102, blocks: [{ kind: "p", text: "Before receiving this Decree" }] },
+    { id: 103, blocks: [{ kind: "p", text: "The scribe" }] },
+    { id: 104, blocks: [{ kind: "p", text: "Apart from man’s deeds the Criterion for Forgiveness or Punishment is decided by Allāh’s Embracing Knowledge about people, their intentions and their hearts." }] },
+    { id: 105, blocks: [{ kind: "p", text: "Reference is made to those who worshipped calf by the order of Sāmerī and for the expiation had to kill themselves the wrongdoers. (2:54)" }] },
   ],
 };
 
