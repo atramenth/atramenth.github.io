@@ -2,16 +2,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Hexagon, IconBack, IconNext, IconType } from "../components/Icons.tsx";
 import { InlineText } from "../components/InlineText.tsx";
+import { useT } from "../hooks/useT.tsx";
 import { NoteSheet } from "../components/NoteSheet.tsx";
 import { SettingsSheet } from "../components/SettingsSheet.tsx";
 import type { BookPage, Surah } from "../domain/Surah.ts";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
 
-function PageView({ page, onNote, unfinished }: { page: BookPage; onNote: (id: number) => void; unfinished: boolean }) {
+function PageView({ page, onNote, unfinished, contentLang }: { page: BookPage; onNote: (id: number) => void; unfinished: boolean; contentLang: string }) {
+  const { t } = useT();
   return (
-    <section className="page" aria-label={`Book page ${page.bookPage}`}>
-      <div className="paper">
+    <section className="page" aria-label={t("reader.bookPage", { n: page.bookPage })}>
+      <div className="paper" lang={contentLang}>
         {page.heading && (
           <header className="heading">
             <h1 className="heading__title">
@@ -48,7 +50,7 @@ function PageView({ page, onNote, unfinished }: { page: BookPage; onNote: (id: n
                   </span>
                 ))}
                 {!b.continues && (
-                  <span className="ayah" aria-label={`Verse ${b.number}`}>
+                  <span className="ayah" aria-label={t("reader.verse", { n: b.number })}>
                     <Hexagon size={30}>
                       <text x="16" y="20.2" textAnchor="middle" fill="currentColor" stroke="none">
                         {b.number}
@@ -60,17 +62,19 @@ function PageView({ page, onNote, unfinished }: { page: BookPage; onNote: (id: n
             ),
           )}
         </div>
-        {unfinished && <p className="partial">The remaining pages of this sūrah haven’t been added yet.</p>}
+        {unfinished && <p className="partial">{t("reader.partial")}</p>}
       </div>
     </section>
   );
 }
 
 export default function Reader() {
+  const { t, rich, lang } = useT();
   const params = useParams();
   const navigate = useNavigate();
   const n = Number(params.number);
   const entry = library.get(n);
+  const contentLang = library.contentLang(n, lang);
 
   const [surah, setSurah] = useState<Surah | null | undefined>(undefined);
   const [current, setCurrent] = useState(0);
@@ -78,14 +82,20 @@ export default function Reader() {
   const [showSettings, setShowSettings] = useState(false);
   const track = useRef<HTMLDivElement>(null);
   const initial = useRef(Math.max(0, Number(params.page ?? 1) - 1));
+  const position = useRef(0);
+  const shownSurah = useRef(n);
+  position.current = current;
 
+  // Reloads only when the text itself changes (a sūrah, or its translation arriving), keeping the page.
   useEffect(() => {
     let live = true;
-    library.load(n).then((s) => live && setSurah(s));
+    if (shownSurah.current === n) initial.current = position.current || initial.current;
+    shownSurah.current = n;
+    library.load(n, contentLang).then((s) => live && setSurah(s));
     return () => {
       live = false;
     };
-  }, [n]);
+  }, [n, contentLang]);
 
   const go = useCallback((i: number, smooth = true) => {
     const el = track.current;
@@ -129,9 +139,9 @@ export default function Reader() {
   if (!entry) {
     return (
       <main className="empty-page">
-        <p>There is no sūrah {params.number}.</p>
+        <p>{t("reader.noSurah", { n: params.number ?? "" })}</p>
         <Link className="btn" to="/surahs">
-          Browse sūrahs
+          {t("home.browse")}
         </Link>
       </main>
     );
@@ -144,21 +154,21 @@ export default function Reader() {
   return (
     <div className="reader">
       <header className="reader__bar">
-        <button type="button" className="icon-btn" onClick={() => (history.length > 1 ? navigate(-1) : navigate("/surahs"))} aria-label="Back">
+        <button type="button" className="icon-btn" onClick={() => (history.length > 1 ? navigate(-1) : navigate("/surahs"))} aria-label={t("reader.back")}>
           <IconBack />
         </button>
         <div className="reader__title">
           <strong>{entry.name}</strong>
           <span>
-            Sūrah {entry.number} · {parts.first === parts.last ? `Part ${parts.first}` : `Parts ${parts.first}–${parts.last}`}
+            {t("reader.subtitle", { n: entry.number, part: parts.first === parts.last ? t("reader.part", { n: parts.first }) : t("reader.parts", { a: parts.first, b: parts.last }) })}
           </span>
         </div>
-        <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label="Reading settings">
+        <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label={t("reader.settings")}>
           <IconType />
         </button>
       </header>
 
-      {surah === undefined && <div className="reader__state">Opening…</div>}
+      {surah === undefined && <div className="reader__state">{t("app.opening")}</div>}
 
       {surah === null && (
         <div className="reader__state">
@@ -168,13 +178,10 @@ export default function Reader() {
                 {entry.number}
               </text>
             </Hexagon>
-            <h1>Not added yet</h1>
-            <p>
-              {entry.name} starts on page {entry.bookPage} of the book. Add <code>s{String(entry.number).padStart(3, "0")}.ts</code> to{" "}
-              <code>src/data/surahs</code> and it opens here.
-            </p>
+            <h1>{t("reader.notAddedTitle")}</h1>
+            <p>{rich("reader.notAddedBody", { name: entry.name, page: entry.bookPage, file: `s${String(entry.number).padStart(3, "0")}.ts` })}</p>
             <Link className="btn" to="/surahs">
-              Browse sūrahs
+              {t("home.browse")}
             </Link>
           </div>
         </div>
@@ -184,28 +191,28 @@ export default function Reader() {
         <>
           <div className="reader__track" ref={track} onScroll={onScroll} tabIndex={-1}>
             {surah.pages.map((p, i) => (
-              <PageView key={p.bookPage} page={p} onNote={setNoteId} unfinished={surah.partial && i === surah.pages.length - 1} />
+              <PageView key={p.bookPage} page={p} onNote={setNoteId} unfinished={surah.partial && i === surah.pages.length - 1} contentLang={contentLang} />
             ))}
           </div>
 
           <footer className="dock">
-            <div className="dock__notes" aria-label="Notes on this page">
-              {noteIds.length > 0 && <span className="dock__label">Notes</span>}
+            <div className="dock__notes" aria-label={t("reader.notesOnPage")}>
+              {noteIds.length > 0 && <span className="dock__label">{t("reader.notes")}</span>}
               {noteIds.map((id) => (
-                <button key={id} type="button" className="chip" onClick={() => setNoteId(id)} aria-label={`Open note ${id}`}>
+                <button key={id} type="button" className="chip" onClick={() => setNoteId(id)} aria-label={t("note.open", { n: id })}>
                   {id}
                 </button>
               ))}
             </div>
             <div className="dock__pager">
-              <button type="button" className="icon-btn" disabled={current === 0} onClick={() => go(current - 1)} aria-label="Previous page">
+              <button type="button" className="icon-btn" disabled={current === 0} onClick={() => go(current - 1)} aria-label={t("reader.prevPage")}>
                 <IconBack />
               </button>
               <span className="dock__pos" aria-live="polite">
                 {current + 1} / {surah.pages.length}
-                <small>book p. {page?.bookPage}</small>
+                <small>{t("reader.bookPageShort", { n: page?.bookPage ?? "" })}</small>
               </span>
-              <button type="button" className="icon-btn" disabled={current === surah.pages.length - 1} onClick={() => go(current + 1)} aria-label="Next page">
+              <button type="button" className="icon-btn" disabled={current === surah.pages.length - 1} onClick={() => go(current + 1)} aria-label={t("reader.nextPage")}>
                 <IconNext />
               </button>
             </div>
@@ -213,7 +220,7 @@ export default function Reader() {
         </>
       )}
 
-      {surah && noteId !== null && <NoteSheet surah={surah} noteId={noteId} onSelect={setNoteId} onClose={() => setNoteId(null)} />}
+      {surah && noteId !== null && <NoteSheet surah={surah} contentLang={contentLang} noteId={noteId} onSelect={setNoteId} onClose={() => setNoteId(null)} />}
       {showSettings && <SettingsSheet onClose={() => setShowSettings(false)} />}
     </div>
   );

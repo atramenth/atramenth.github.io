@@ -1,9 +1,11 @@
 import { Fragment, useState, type ReactNode } from "react";
 import { IconBack, IconNext, IconType } from "../components/Icons.tsx";
+import { LangToggle } from "../components/LangToggle.tsx";
 import { InlineText } from "../components/InlineText.tsx";
 import { SettingsSheet } from "../components/SettingsSheet.tsx";
 import { Sheet } from "../components/Sheet.tsx";
-import { INTRODUCTION } from "../data/introduction.ts";
+import { introductionFor } from "../data/content.ts";
+import { useT } from "../hooks/useT.tsx";
 import type { IntroBlock } from "../domain/types.ts";
 import { library } from "../services/library.ts";
 
@@ -81,6 +83,8 @@ function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => v
 }
 
 export default function Introduction() {
+  const { t, rich, lang } = useT();
+  const INTRODUCTION = introductionFor(lang);
   const [noteId, setNoteId] = useState<number | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const empty = INTRODUCTION.blocks.length === 0;
@@ -96,13 +100,16 @@ export default function Introduction() {
       <header className="screen__head screen__head--row">
         <div>
           <h1>{INTRODUCTION.title}</h1>
-          <p>From the end of the book</p>
+          <p>{t("intro.subtitle")}</p>
         </div>
-        {!empty && (
-          <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label="Reading settings">
-            <IconType />
-          </button>
-        )}
+        <div className="head-actions">
+          <LangToggle />
+          {!empty && (
+            <button type="button" className="icon-btn" onClick={() => setShowSettings(true)} aria-label={t("reader.settings")}>
+              <IconType />
+            </button>
+          )}
+        </div>
       </header>
 
       {empty ? (
@@ -112,10 +119,8 @@ export default function Introduction() {
             <circle cx="60" cy="60" r="36" className="ink-ring ink-ring--dash" />
             <path d="M60 24c13 14 20 24 20 35a20 20 0 0 1-40 0c0-11 7-21 20-35z" className="ink-drop" />
           </svg>
-          <h2>Waiting for the text</h2>
-          <p>
-            Add the translator’s introduction to <code>src/data/introduction.ts</code> as <code>blocks</code> and <code>footnotes</code>.
-          </p>
+          <h2>{t("intro.emptyTitle")}</h2>
+          <p>{rich("intro.emptyBody")}</p>
         </div>
       ) : (
         <article className="intro">
@@ -127,12 +132,12 @@ export default function Introduction() {
 
       {note && (
         <Sheet
-          label={`Note ${note.id}`}
+          label={t("note.label", { n: note.id })}
           onClose={() => setNoteId(null)}
           header={
             <>
-              <span className="sheet__kicker">Note</span> {note.id}
-              <span className="sheet__of"> of {notes.length}</span>
+              <span className="sheet__kicker">{t("note.kicker")}</span> {note.id}
+              <span className="sheet__of"> {t("note.of", { n: notes.length })}</span>
             </>
           }
         >
@@ -141,12 +146,12 @@ export default function Introduction() {
               <NoteText text={note.text} />
             </p>
           </article>
-          <nav className="note-nav" aria-label="Notes">
+          <nav className="note-nav" aria-label={t("note.nav")}>
             <button type="button" className="btn btn--quiet" disabled={!prev} onClick={() => prev && setNoteId(prev.id)}>
-              <IconBack /> Previous
+              <IconBack /> {t("note.prev")}
             </button>
             <button type="button" className="btn btn--quiet" disabled={!next} onClick={() => next && setNoteId(next.id)}>
-              Next <IconNext />
+              {t("note.next")} <IconNext />
             </button>
           </nav>
         </Sheet>

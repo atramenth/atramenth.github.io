@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Hexagon } from "../components/Icons.tsx";
+import { LangToggle } from "../components/LangToggle.tsx";
 import type { CatalogItem } from "../domain/Surah.ts";
 import { useStore } from "../hooks/useStore.ts";
+import { useT, type T } from "../hooks/useT.tsx";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
 
-function Row({ item, continues }: { item: CatalogItem; continues: boolean }) {
+function Row({ item, continues, t }: { item: CatalogItem; continues: boolean; t: T["t"] }) {
   const ready = library.isAvailable(item.number);
   const body = (
     <>
@@ -20,11 +22,11 @@ function Row({ item, continues }: { item: CatalogItem; continues: boolean }) {
         <strong>{item.name}</strong>
         <small>
           {continues
-            ? `Continued from Part ${library.partOf(item.number)}`
-            : `${item.place === "Madinah" ? "Madīnah" : "Makkah"} · ${item.ayahCount} āyāt · p. ${item.bookPage}`}
+            ? t("surahs.continued", { n: library.partOf(item.number) })
+            : `${t(`place.${item.place}`)} · ${item.ayahCount} ${t("unit.ayat")} · ${t("unit.pageShort")} ${item.bookPage}`}
         </small>
       </span>
-      <span className="row__tag">{ready ? "Read" : "Soon"}</span>
+      <span className="row__tag">{ready ? t("surahs.tagRead") : t("surahs.tagSoon")}</span>
     </>
   );
   return ready ? (
@@ -39,6 +41,7 @@ function Row({ item, continues }: { item: CatalogItem; continues: boolean }) {
 }
 
 export default function Surahs() {
+  const { t } = useT();
   const { last } = useStore(progress);
   const groups = library.byPart();
   const openPart = last ? library.partOf(last.surah) : 1;
@@ -46,18 +49,21 @@ export default function Surahs() {
 
   return (
     <main className="screen">
-      <header className="screen__head">
-        <h1>Sūrahs</h1>
-        <p>
-          {library.availableCount} of 114 added · 30 parts
-        </p>
+      <header className="screen__head screen__head--row">
+        <div>
+          <h1>{t("surahs.title")}</h1>
+          <p>{t("surahs.summary", { n: library.availableCount })}</p>
+        </div>
+        <div className="head-actions">
+          <LangToggle />
+        </div>
       </header>
 
       {resume && last && (
         <Link className="resume" to={`/surah/${last.surah}/${last.pageIndex + 1}`}>
-          <small>Continue reading</small>
+          <small>{t("surahs.continue")}</small>
           <strong>{resume.name}</strong>
-          <span>Page {last.pageIndex + 1}</span>
+          <span>{t("surahs.page", { n: last.pageIndex + 1 })}</span>
         </Link>
       )}
 
@@ -65,15 +71,13 @@ export default function Surahs() {
         {groups.map(({ part, items }) => (
           <details key={part} className="part" open={part === openPart}>
             <summary>
-              <span className="part__name">Part {part}</span>
-              <span className="part__meta">
-                from p. {Math.round(library.partStartPage(part))}
-              </span>
+              <span className="part__name">{t("surahs.part", { n: part })}</span>
+              <span className="part__meta">{t("surahs.partFrom", { n: Math.round(library.partStartPage(part)) })}</span>
             </summary>
             {items.length === 0 ? (
-              <p className="part__note">No sūrah data for this part.</p>
+              <p className="part__note">{t("surahs.partEmpty")}</p>
             ) : (
-              items.map(({ item, continues }) => <Row key={item.number} item={item} continues={continues} />)
+              items.map(({ item, continues }) => <Row key={item.number} item={item} continues={continues} t={t} />)
             )}
           </details>
         ))}

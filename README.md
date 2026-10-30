@@ -37,7 +37,7 @@
 
 <br/>
 
-[Overview](#overview) · [Screens](#screens) · [Features](#features) · [Reading](#reading) · [Architecture](#architecture) · [Content](#adding-a-sūrah) · [Design system](#design-system) · [Getting started](#getting-started) · [Deployment](#deployment) · [Credits](#credits)
+[Overview](#overview) · [Screens](#screens) · [Features](#features) · [Reading](#reading) · [Architecture](#architecture) · [Content](#adding-a-sūrah) · [Languages](#languages) · [Design system](#design-system) · [Getting started](#getting-started) · [Deployment](#deployment) · [Credits](#credits)
 
 </div>
 
@@ -198,6 +198,21 @@ npm run check:data   # validates the catalog, the parts and every sūrah file
 
 ---
 
+<a id="languages"></a>
+## Languages
+
+The interface and the book’s supporting pages are available in **English** and **Türkçe**. The **EN | TR** switch sits at the top right of every screen (and in *Reading settings* inside the reader). The choice is remembered on the device; on a first visit the browser language is used when it is supported.
+
+| What | Where |
+|---|---|
+| Interface text | `src/i18n/en.ts` (source of truth) and `src/i18n/tr.ts`; the type checker fails the build if a key is missing from Turkish |
+| Introduction and translator page | `src/data/tr/introduction.ts`, `src/data/tr/translator.ts` (same blocks, same footnote markers as English) |
+| Sūrah texts | English only for now. A translation goes in `src/data/surahs/tr/sNNN.ts`; until it exists the English text is shown. Nothing needs registering |
+
+`npm run check:data` verifies that the Turkish introduction mirrors the English one (block order, footnotes, untouched Arabic) and validates any translated sūrah file. To add a language, add its code to `LANGS` in `src/i18n/index.ts`, a message file, and a content entry in `src/data/content.ts`.
+
+---
+
 <a id="design-system"></a>
 ## <img src="assets/icons/palette.svg" width="24" height="24" align="absmiddle" alt=""/> Design system
 
@@ -318,8 +333,10 @@ atramenth.github.io/
 │   │   └── translator.ts         The translator’s biography text
 │   ├── domain/                   Library, Surah, BookPage, Footnote, InlineParser, types
 │   ├── hooks/useStore.ts         Bridge from a Store to React
+│   ├── hooks/useT.tsx            Translation hook (t, rich, lang)
+│   ├── i18n/                     English and Turkish interface text
 │   ├── pages/                    Home, Surahs, IndexPage, Introduction, Translator, Reader
-│   ├── services/                 Store, SettingsStore, ProgressStore, library
+│   ├── services/                 Store, SettingsStore, LocaleStore, ProgressStore, library
 │   └── styles/app.css            Design tokens and every style
 ├── .github/workflows/deploy.yml  CI/CD to GitHub Pages
 ├── index.html                    Fonts, theme-before-paint script, manifest links

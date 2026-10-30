@@ -1,48 +1,54 @@
 import { Link } from "react-router-dom";
+import { IconNext } from "../components/Icons.tsx";
+import { LangToggle } from "../components/LangToggle.tsx";
 import { OrbitChart } from "../components/OrbitChart.tsx";
 import { TRANSLATOR } from "../data/translator.ts";
-import { IconNext } from "../components/Icons.tsx";
 import { useStore } from "../hooks/useStore.ts";
+import { useT } from "../hooks/useT.tsx";
 import { library } from "../services/library.ts";
 import { progress } from "../services/ProgressStore.ts";
 
 export default function Home() {
+  const { t } = useT();
   const { last } = useStore(progress);
   const resume = last ? library.get(last.surah) : undefined;
 
   return (
     <main className="home">
+      <div className="home__lang">
+        <LangToggle />
+      </div>
       <OrbitChart />
-      <Link className="home__credit" to="/translator" aria-label={`Translated by ${TRANSLATOR.name}. Read about the translator.`}>
-        <small>Translated by</small>
+      <Link className="home__credit" to="/translator" aria-label={t("home.creditAria", { name: TRANSLATOR.name })}>
+        <small>{t("home.translatedBy")}</small>
         <strong>{TRANSLATOR.name}</strong>
         <IconNext />
       </Link>
       <div className="home__foot">
-        <p className="home__line">The Qur’ān in English, read closely.</p>
+        <p className="home__line">{t("home.line")}</p>
         <div className="home__legend" aria-hidden="true">
           <span>
-            <i className="key key--makkah" /> Makkah {library.count("Makkah")}
+            <i className="key key--makkah" /> {t("place.Makkah")} {library.count("Makkah")}
           </span>
           <span>
-            <i className="key key--madinah" /> Madīnah {library.count("Madinah")}
+            <i className="key key--madinah" /> {t("place.Madinah")} {library.count("Madinah")}
           </span>
           <span>
-            <i className="key key--part" /> 30 parts
+            <i className="key key--part" /> {t("home.parts")}
           </span>
         </div>
         <div className="home__actions">
           {resume && last ? (
             <Link className="btn btn--primary" to={`/surah/${last.surah}/${last.pageIndex + 1}`}>
-              Continue · {resume.name}
+              {t("home.continue", { name: resume.name })}
             </Link>
           ) : (
             <Link className="btn btn--primary" to="/surah/1/1">
-              Begin with Fātiha
+              {t("home.begin")}
             </Link>
           )}
           <Link className="btn" to="/surahs">
-            Browse sūrahs
+            {t("home.browse")}
           </Link>
         </div>
       </div>

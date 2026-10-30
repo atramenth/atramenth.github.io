@@ -1,12 +1,15 @@
 import { Fragment } from "react";
 import { InlineParser } from "../domain/InlineParser.ts";
 import type { Footnote, Surah } from "../domain/Surah.ts";
+import { useT } from "../hooks/useT.tsx";
 import { library } from "../services/library.ts";
 import { IconBack, IconNext } from "./Icons.tsx";
 import { Sheet } from "./Sheet.tsx";
 
 interface Props {
   surah: Surah;
+  /** Language of the sūrah text, for assistive tech. */
+  contentLang: string;
   noteId: number;
   onSelect: (id: number) => void;
   onClose: () => void;
@@ -30,12 +33,13 @@ function RichText({ text }: { text: string }) {
 }
 
 function RefChip({ ref_, surah }: { ref_: string; surah: number }) {
+  const { t } = useT();
   const ready = library.isAvailable(surah);
   const name = library.get(surah)?.name;
   return (
     <span
       className={`ref${ready ? "" : " is-soon"}`}
-      title={ready ? `Sūrah ${surah}${name ? ` · ${name}` : ""}` : `Sūrah ${surah}${name ? ` (${name})` : ""} isn’t added yet`}
+      title={ready ? (name ? t("note.refTitleNamed", { n: surah, name }) : t("note.refTitle", { n: surah })) : t("note.refSoon", { n: surah, name: name ?? "" })}
     >
       {ref_}
     </span>
@@ -65,7 +69,8 @@ function NoteBody({ note }: { note: Footnote }) {
   );
 }
 
-export function NoteSheet({ surah, noteId, onSelect, onClose }: Props) {
+export function NoteSheet({ surah, contentLang, noteId, onSelect, onClose }: Props) {
+  const { t } = useT();
   const notes = surah.orderedFootnotes;
   const index = notes.findIndex((n) => n.id === noteId);
   const note = notes[index];
@@ -75,24 +80,24 @@ export function NoteSheet({ surah, noteId, onSelect, onClose }: Props) {
 
   return (
     <Sheet
-      label={`Note ${note.id}`}
+      label={t("note.label", { n: note.id })}
       onClose={onClose}
       header={
         <>
-          <span className="sheet__kicker">Note</span> {note.id}
-          <span className="sheet__of"> of {notes.length}</span>
+          <span className="sheet__kicker">{t("note.kicker")}</span> {note.id}
+          <span className="sheet__of"> {t("note.of", { n: notes.length })}</span>
         </>
       }
     >
-      <article className="note" key={note.id}>
+      <article className="note" key={note.id} lang={contentLang}>
         <NoteBody note={note} />
       </article>
-      <nav className="note-nav" aria-label="Notes">
+      <nav className="note-nav" aria-label={t("note.nav")}>
         <button type="button" className="btn btn--quiet" disabled={!prev} onClick={() => prev && onSelect(prev.id)}>
-          <IconBack /> Previous
+          <IconBack /> {t("note.prev")}
         </button>
         <button type="button" className="btn btn--quiet" disabled={!next} onClick={() => next && onSelect(next.id)}>
-          Next <IconNext />
+          {t("note.next")} <IconNext />
         </button>
       </nav>
     </Sheet>
