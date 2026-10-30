@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { HashRouter, Link, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { useT } from "./hooks/useT.tsx";
 import { TabBar } from "./components/TabBar.tsx";
 import Home from "./pages/Home.tsx";
 import IndexPage from "./pages/IndexPage.tsx";
@@ -20,20 +21,26 @@ function Shell() {
 }
 
 function NotFound() {
+  const { t } = useT();
   return (
     <main className="empty-page">
-      <p>That page isn’t in this book.</p>
+      <p>{t("app.notFound")}</p>
       <Link className="btn" to="/">
-        Go home
+        {t("app.goHome")}
       </Link>
     </main>
   );
 }
 
+function Loading() {
+  const { t } = useT();
+  return <div className="reader__state">{t("app.opening")}</div>;
+}
+
 export default function App() {
   return (
     <HashRouter>
-      <Suspense fallback={<div className="reader__state">Opening…</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route element={<Shell />}>
             <Route index element={<Home />} />

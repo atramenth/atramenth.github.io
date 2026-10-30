@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useT } from "../hooks/useT.tsx";
 import { IconClose } from "./Icons.tsx";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 
 /** iOS-style bottom sheet: backdrop, Esc, drag-down on the grabber. */
 export function Sheet({ label, onClose, header, children }: Props) {
+  const { t } = useT();
   const ref = useRef<HTMLDivElement>(null);
   const startY = useRef<number | null>(null);
   const [dy, setDy] = useState(0);
@@ -55,7 +57,7 @@ export function Sheet({ label, onClose, header, children }: Props) {
         </div>
         <div className="sheet__head">
           <div className="sheet__title">{header}</div>
-          <button type="button" className="icon-btn" onClick={onClose} aria-label="Close">
+          <button type="button" className="icon-btn" onClick={onClose} aria-label={t("sheet.close")}>
             <IconClose />
           </button>
         </div>

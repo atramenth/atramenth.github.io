@@ -1,5 +1,7 @@
 import { Fragment } from "react";
-import { TRANSLATOR } from "../data/translator.ts";
+import { LangToggle } from "../components/LangToggle.tsx";
+import { translatorFor } from "../data/content.ts";
+import { useT } from "../hooks/useT.tsx";
 import letter from "../assets/translator/afro-asian-writers-letter.webp";
 import letterEn from "../assets/translator/afro-asian-writers-letter-translation.webp";
 
@@ -13,14 +15,20 @@ function Rich({ text }: { text: string }) {
 }
 
 export default function Translator() {
-  const t = TRANSLATOR;
+  const { t: tr, lang } = useT();
+  const t = translatorFor(lang);
   return (
     <main className="screen screen--read">
-      <header className="screen__head">
-        <h1>{t.title}</h1>
-        <p>
-          {t.name} · {t.subtitle}
-        </p>
+      <header className="screen__head screen__head--row">
+        <div>
+          <h1>{t.title}</h1>
+          <p>
+            {t.name} · {t.subtitle}
+          </p>
+        </div>
+        <div className="head-actions">
+          <LangToggle />
+        </div>
       </header>
 
       <article className="prose bio">
@@ -41,13 +49,13 @@ export default function Translator() {
           ].map((l) => (
             <div className="letter__item" key={l.src}>
               <span className="letter__label">{l.label}</span>
-              <a className="letter__frame" href={l.src} target="_blank" rel="noopener" aria-label={`Open ${l.label} full size in a new tab`}>
+              <a className="letter__frame" href={l.src} target="_blank" rel="noopener" aria-label={tr("translator.openImage", { label: l.label })}>
                 <img src={l.src} alt={l.alt} width={l.w} height={l.h} loading="lazy" decoding="async" />
               </a>
             </div>
           ))}
         </div>
-        <figcaption>{t.letter.caption} Tap an image to open it full size.</figcaption>
+        <figcaption>{t.letter.caption} {tr("translator.tapHint")}</figcaption>
       </figure>
     </main>
   );

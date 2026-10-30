@@ -21,11 +21,24 @@
     />
     <title>Atramenth</title>
     <script>
-      // Apply the saved theme before first paint to avoid a flash.
+      // Apply the saved theme and language before first paint to avoid a flash.
       (function () {
         try {
           var s = JSON.parse(localStorage.getItem("atramenth:settings") || "{}");
           if (s.theme === "light" || s.theme === "dark") document.documentElement.dataset.theme = s.theme;
+        } catch (e) {}
+        try {
+          var saved = (JSON.parse(localStorage.getItem("atramenth:locale") || "{}") || {}).lang;
+          var supported = { en: 1, tr: 1 };
+          var lang = supported[saved] ? saved : null;
+          if (!lang) {
+            var prefs = navigator.languages || [navigator.language];
+            for (var i = 0; i < prefs.length && !lang; i++) {
+              var base = String(prefs[i]).slice(0, 2).toLowerCase();
+              if (supported[base]) lang = base;
+            }
+          }
+          document.documentElement.lang = lang || "en";
         } catch (e) {}
       })();
     </script>

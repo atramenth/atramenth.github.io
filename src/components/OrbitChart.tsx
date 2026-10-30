@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { useT } from "../hooks/useT.tsx";
 import { LAST_BOOK_PAGE } from "../domain/Library.ts";
 import { library } from "../services/library.ts";
 
@@ -32,6 +33,7 @@ const R_RULER = 136;
  * the parts; a ruler ring counts 1,196 pages. A slow scan sweeps the ring.
  */
 export function OrbitChart() {
+  const { t } = useT();
   const [active, setActive] = useState<number | null>(null);
 
   const arcs = useMemo(
@@ -63,7 +65,7 @@ export function OrbitChart() {
 
   return (
     <figure className="orbit">
-      <svg viewBox="0 0 400 400" role="img" aria-label="The book as a ring: 114 sūrahs on two tracks, 30 parts and 1,196 pages">
+      <svg viewBox="0 0 400 400" role="img" aria-label={t("orbit.aria")}>
         <g className="orbit__rings" transform={`rotate(-90 ${C} ${C})`}>
           <circle className="orbit__ruler" cx={C} cy={C} r={R_RULER} strokeWidth="6" strokeDasharray={`${(circ / TOTAL) * 0.3} ${(circ / TOTAL) * 0.7}`} />
           <circle className="orbit__ruler orbit__ruler--major" cx={C} cy={C} r={R_RULER} strokeWidth="13" strokeDasharray={`0.5 ${circ / (TOTAL / 100) - 0.5}`} />
@@ -105,16 +107,16 @@ export function OrbitChart() {
             <span className="orbit__num">{shown.number}</span>
             <span className="orbit__name">{shown.name}</span>
             <span className="orbit__meta">
-              {shown.place} · {shown.ayahCount} āyāt · p. {shown.bookPage}
+              {t(`place.${shown.place}`)} · {shown.ayahCount} {t("unit.ayat")} · {t("unit.pageShort")} {shown.bookPage}
             </span>
             <Link className="orbit__open" to={library.isAvailable(shown.number) ? `/surah/${shown.number}/1` : "/index"}>
-              {library.isAvailable(shown.number) ? "Read" : "In the index"}
+              {library.isAvailable(shown.number) ? t("orbit.read") : t("orbit.inIndex")}
             </Link>
           </>
         ) : (
           <>
             <span className="orbit__word">Atramenth</span>
-            <span className="orbit__meta">1,196 pages, one ring</span>
+            <span className="orbit__meta">{t("orbit.tagline")}</span>
           </>
         )}
       </figcaption>
