@@ -104,7 +104,7 @@ export const CATALOG: readonly CatalogEntry[] = [
   { number: 96, name: "Al-'Alaq", place: "Makkah", bookPage: 1174, ayahCount: 19 },
   { number: 97, name: "Al-Qadr", place: "Makkah", bookPage: 1176, ayahCount: 5 },
   { number: 98, name: "Al-Bayyinah", place: "Madinah", bookPage: 1177, ayahCount: 8 },
-  { number: 99, name: "Az-Zilzāl", place: "Madinah", bookPage: 1180, ayahCount: 8 },
+  { number: 99, name: "Az-Zilzāl", place: "Madinah", bookPage: 1179, ayahCount: 8 },
   { number: 100, name: "Al-'Ādiyāt", place: "Makkah", bookPage: 1181, ayahCount: 11 },
   { number: 101, name: "Al-Qāri'ah", place: "Makkah", bookPage: 1182, ayahCount: 11 },
   { number: 102, name: "At-Takāthur", place: "Makkah", bookPage: 1184, ayahCount: 8 },
