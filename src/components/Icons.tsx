@@ -68,12 +68,67 @@ export const IconType = () => (
   </svg>
 );
 
-/** The hexagonal end-of-verse marker, echoing the book’s own. */
-export function Hexagon({ size = 28, children, filled = false }: { size?: number; children?: ReactNode; filled?: boolean }) {
+
+export const IconBookmark = ({ filled = false }: { filled?: boolean }) => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M7 4.5h10a1 1 0 0 1 1 1V20l-6-4.2L6 20V5.5a1 1 0 0 1 1-1z" />
+  </svg>
+);
+export const IconJump = () => (
+  <Svg>
+    <circle cx="12" cy="12" r="8.5" />
+    <path d="M12 7.5v9M7.5 12h9" strokeOpacity="0.55" />
+    <circle cx="12" cy="12" r="1.2" />
+  </Svg>
+);
+export const IconCheck = () => (
+  <Svg>
+    <path d="m5.5 12.5 4.2 4.2 8.8-9.4" />
+  </Svg>
+);
+export const IconUp = () => (
+  <Svg>
+    <path d="M12 19V5M6 11l6-6 6 6" />
+  </Svg>
+);
+
+/** The hexagonal end-of-verse marker, echoing the book’s own. `progress` (0 to 1) inks the outline like a pen drawing it. */
+export function Hexagon({ size = 28, children, filled = false, progress }: { size?: number; children?: ReactNode; filled?: boolean; progress?: number }) {
+  const pts = "16,2.5 27.7,9.25 27.7,22.75 16,29.5 4.3,22.75 4.3,9.25";
+  const drawn = progress !== undefined && progress > 0;
   return (
     <svg viewBox="0 0 32 32" width={size} height={size} aria-hidden="true" className="hex">
-      <polygon points="16,2.5 27.7,9.25 27.7,22.75 16,29.5 4.3,22.75 4.3,9.25" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+      <polygon points={pts} fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" opacity={drawn ? 0.35 : 1} />
+      {drawn && (
+        <polygon className="hex__ink" points={pts} pathLength={1} fill="none" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" strokeDasharray={`${Math.min(1, progress)} 1`} />
+      )}
       {children}
     </svg>
+  );
+}
+
+/** The diamond rule used under titles. */
+export function Ornament({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`ornament ${className}`} viewBox="0 0 240 14" aria-hidden="true">
+      <path d="M0 7h98M142 7h98" />
+      <polygon points="120,1.5 127,7 120,12.5 113,7" />
+    </svg>
+  );
+}
+
+/**
+ * A number set inside the hexagon. The type size follows the digit count and the text is centred on the
+ * hexagon's own centre, so 1, 36 and 286 all sit inside it with the same breathing room.
+ */
+export function HexNumber({ n, size = 36, progress, filled = false }: { n: number; size?: number; progress?: number; filled?: boolean }) {
+  const digits = String(n).length;
+  const fontSize = digits >= 3 ? 9.6 : digits === 2 ? 11.4 : 13;
+  return (
+    <Hexagon size={size} progress={progress} filled={filled}>
+      <text x="16" y="16.4" textAnchor="middle" dominantBaseline="central" fill={filled ? "var(--paper)" : "currentColor"} stroke="none" fontSize={fontSize} className="hex__num">
+        {n}
+      </text>
+    </Hexagon>
   );
 }

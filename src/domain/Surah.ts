@@ -24,11 +24,17 @@ export class BookPage {
   readonly bookPage: number;
   readonly heading: HeadingData | undefined;
   readonly blocks: readonly PageBlock[];
+  /**
+   * For every block, how many translator brackets are already open when it starts. Non-zero only for a verse that
+   * began on the previous book page inside an insertion. Filled in by `Surah`, which can see the page before.
+   */
+  readonly openDepths: readonly number[];
 
-  constructor(data: PageData) {
+  constructor(data: PageData, openDepths: readonly number[] = []) {
     this.bookPage = data.bookPage;
     this.heading = data.heading;
     this.blocks = data.blocks;
+    this.openDepths = openDepths;
   }
 
   /** Footnote ids cited on this page, in reading order. */
@@ -42,6 +48,12 @@ export class BookPage {
   get verses(): VerseBlock[] {
     return this.blocks.filter((b): b is VerseBlock => b.type === "verse");
   }
+
+  /** First and last verse number printed on this page, or null for a page with no verse. */
+  get verseRange(): { first: number; last: number } | null {
+    const v = this.verses;
+    return v.length ? { first: v[0].number, last: v[v.length - 1].number } : null;
+  }
 }
 
 /** A fully validated surah ready for the reader. */
@@ -50,12 +62,34 @@ export class Surah {
   readonly partial: boolean;
   readonly pages: readonly BookPage[];
   readonly footnotes: ReadonlyMap<number, Footnote>;
+  /** Markup slips in the data (a stray `]`, a `[` never closed). Harmless to the reader, listed by `check:data`. */
+  readonly markupWarnings: readonly string[];
 
   constructor(data: SurahData) {
     this.number = data.number;
     this.partial = data.partial ?? false;
-    this.pages = data.pages.map((p) => new BookPage(p));
     this.footnotes = new Map(data.footnotes.map((f) => [f.id, new Footnote(f)]));
+
+    // Carry the open-bracket depth through the verses in order, across lines and across book pages.
+    const warnings: string[] = [];
+    let carry = 0;
+    this.pages = data.pages.map((p) => {
+      const depths = p.blocks.map((b) => {
+        if (b.type !== "verse") return 0;
+        const start = b.continued ? carry : 0;
+        if (!b.continued && carry > 0) warnings.push(`page ${p.bookPage}, verse ${b.number}: a "[" from the previous verse was never closed`);
+        const end = InlineParser.endDepth(b.lines, start);
+        const hits = InlineParser.readLines(b.lines, start);
+        if (hits.lines.some((l) => l.some((t) => t.kind === "text" && t.value.includes("]") && !t.editorial))) {
+          warnings.push(`page ${p.bookPage}, verse ${b.number}: a "]" has no matching "["`);
+        }
+        carry = b.continues ? end : 0;
+        if (!b.continues && end > 0) warnings.push(`page ${p.bookPage}, verse ${b.number}: a "[" is never closed`);
+        return start;
+      });
+      return new BookPage(p, depths);
+    });
+    this.markupWarnings = warnings;
     this.validate();
   }
 
@@ -65,7 +99,14 @@ export class Surah {
 
   pageIndexOfVerse(ayah: number): number {
     const i = this.pages.findIndex((p) => p.verses.some((v) => v.number === ayah));
-    return i < 0 ? 0 : i;
+    return i < 0 ? -1 : i;
+  }
+
+  /** Highest verse number present in the data. */
+  get lastVerse(): number {
+    let last = 0;
+    for (const p of this.pages) for (const v of p.verses) last = Math.max(last, v.number);
+    return last;
   }
 
   /** Fails loudly when a data file is inconsistent. */

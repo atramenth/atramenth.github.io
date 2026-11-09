@@ -10,8 +10,11 @@ import { progress } from "../services/ProgressStore.ts";
 
 export default function Home() {
   const { t } = useT();
-  const { last } = useStore(progress);
+  const prog = useStore(progress);
+  const last = prog.last;
   const resume = last ? library.get(last.surah) : undefined;
+  const info = last ? prog.surahs[last.surah] : undefined;
+  const pct = last ? Math.round(progress.fraction(last.surah) * 100) : 0;
 
   return (
     <main className="home">
@@ -19,13 +22,35 @@ export default function Home() {
         <LangToggle />
       </div>
       <OrbitChart />
-      <Link className="home__credit" to="/translator" aria-label={t("home.creditAria", { name: TRANSLATOR.name })}>
-        <small>{t("home.translatedBy")}</small>
-        <strong>{TRANSLATOR.name}</strong>
-        <IconNext />
-      </Link>
+
       <div className="home__foot">
-        <p className="home__line">{t("home.line")}</p>
+        {resume && last ? (
+          <Link className="resume resume--hero" to={`/surah/${last.surah}/${last.pageIndex + 1}`}>
+            <small>{t("home.resumeKicker")}</small>
+            <strong>{resume.name}</strong>
+            <span>{info?.total ? t("home.resumeMeta", { n: last.pageIndex + 1, total: info.total }) : t("surahs.page", { n: last.pageIndex + 1 })}</span>
+            <IconNext />
+            <i className="resume__bar" aria-hidden="true">
+              <b style={{ width: `${Math.max(pct, 3)}%` }} />
+            </i>
+          </Link>
+        ) : (
+          <Link className="btn btn--primary btn--wide" to="/surah/1/1">
+            {t("home.begin")}
+          </Link>
+        )}
+
+        <div className="home__actions">
+          <Link className="btn" to="/surahs">
+            {t("home.browse")}
+          </Link>
+          <Link className="btn btn--quiet" to="/translator" aria-label={t("home.creditAria", { name: TRANSLATOR.name })}>
+            <span className="credit">
+              <small>{t("home.translatedBy")}</small> {TRANSLATOR.name}
+            </span>
+          </Link>
+        </div>
+
         <div className="home__legend" aria-hidden="true">
           <span>
             <i className="key key--makkah" /> {t("place.Makkah")} {library.count("Makkah")}
@@ -36,20 +61,9 @@ export default function Home() {
           <span>
             <i className="key key--part" /> {t("home.parts")}
           </span>
-        </div>
-        <div className="home__actions">
-          {resume && last ? (
-            <Link className="btn btn--primary" to={`/surah/${last.surah}/${last.pageIndex + 1}`}>
-              {t("home.continue", { name: resume.name })}
-            </Link>
-          ) : (
-            <Link className="btn btn--primary" to="/surah/1/1">
-              {t("home.begin")}
-            </Link>
-          )}
-          <Link className="btn" to="/surahs">
-            {t("home.browse")}
-          </Link>
+          <span>
+            <i className="key key--here" /> {t("orbit.here")}
+          </span>
         </div>
       </div>
     </main>
