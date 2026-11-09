@@ -41,6 +41,8 @@ for (const f of readdirSync(dir).filter((f) => /^s\d{3}\.ts$/.test(f))) {
     const cited = new Set(s.pages.flatMap((p) => p.noteIds));
     for (const id of s.footnotes.keys()) if (!cited.has(id)) fail(`${f}: footnote ${id} is never cited`);
     console.log(`✓ ${f}: ${s.pages.length} pages, ${s.footnotes.size} notes${s.partial ? ", partial (ends at verse " + last + ")" : ""}`);
+    // Markup slips never break the reader, but they should be fixed in the data: list them without failing.
+    for (const w of s.markupWarnings) console.warn(`  ⚠ ${f}: ${w}`);
   } catch (e) {
     fail(`${f}: ${(e as Error).message}`);
   }

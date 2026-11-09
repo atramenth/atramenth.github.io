@@ -1,36 +1,16 @@
-import { Fragment, useState, type ReactNode } from "react";
-import { IconBack, IconNext, IconType } from "../components/Icons.tsx";
+import { useState } from "react";
+import { IconBack, IconNext, IconType, Ornament } from "../components/Icons.tsx";
 import { LangToggle } from "../components/LangToggle.tsx";
-import { InlineText } from "../components/InlineText.tsx";
+import { InlineText, MarkedLines } from "../components/InlineText.tsx";
+import { ReadingProgress } from "../components/ReadingProgress.tsx";
+import { RefText } from "../components/Refs.tsx";
 import { SettingsSheet } from "../components/SettingsSheet.tsx";
 import { Sheet } from "../components/Sheet.tsx";
 import { introductionFor } from "../data/content.ts";
 import { useT } from "../hooks/useT.tsx";
 import type { IntroBlock } from "../domain/types.ts";
-import { library } from "../services/library.ts";
 
-/** Qur’ān references in a note (2:57, 4: 149, 54:17, 22 …) become the same chips the reader uses. */
-const REF = /(\d{1,3}):\s?(\d{1,3})(?:\s*[-–]\s*\d{1,3})*/g;
-
-function NoteText({ text }: { text: string }) {
-  const parts: ReactNode[] = [];
-  let last = 0;
-  for (const m of text.matchAll(REF)) {
-    const at = m.index ?? 0;
-    if (at > last) parts.push(<Fragment key={at}>{text.slice(last, at)}</Fragment>);
-    const ready = library.isAvailable(Number(m[1]));
-    parts.push(
-      <span key={`r${at}`} className={`ref${ready ? "" : " is-soon"}`}>
-        {m[0]}
-      </span>,
-    );
-    last = at + m[0].length;
-  }
-  if (last < text.length) parts.push(<Fragment key="end">{text.slice(last)}</Fragment>);
-  return <>{parts}</>;
-}
-
-function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => void }) {
+function Block({ block, onNote, from }: { block: IntroBlock; onNote: (id: number) => void; from: string }) {
   switch (block.type) {
     case "basmala":
       return (
@@ -44,27 +24,19 @@ function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => v
       return (
         <>
           <h2 className="intro__title">{block.text}</h2>
-          <svg className="intro__rule" viewBox="0 0 240 14" aria-hidden="true">
-            <path d="M0 7h98M142 7h98" />
-            <polygon points="120,1.5 127,7 120,12.5 113,7" />
-          </svg>
+          <Ornament className="intro__rule" />
         </>
       );
     case "heading":
       return (
         <h3 className={`intro__heading${block.italic ? " is-italic" : ""}`}>
-          <InlineText text={block.text} onNote={onNote} />
+          <InlineText text={block.text} onNote={onNote} refFrom={from} />
         </h3>
       );
     case "lines":
       return (
         <p className="intro__lines">
-          {block.lines.map((l, i) => (
-            <Fragment key={i}>
-              {i > 0 && <br />}
-              <InlineText text={l} onNote={onNote} />
-            </Fragment>
-          ))}
+          <MarkedLines lines={block.lines} onNote={onNote} refFrom={from} as="br" />
         </p>
       );
     case "ornament":
@@ -76,7 +48,7 @@ function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => v
     default:
       return (
         <p className="intro__p">
-          <InlineText text={block.text} onNote={onNote} />
+          <InlineText text={block.text} onNote={onNote} refFrom={from} />
         </p>
       );
   }
@@ -85,6 +57,7 @@ function Block({ block, onNote }: { block: IntroBlock; onNote: (id: number) => v
 export default function Introduction() {
   const { t, rich, lang } = useT();
   const INTRODUCTION = introductionFor(lang);
+  const from = t("tabs.introduction");
   const [noteId, setNoteId] = useState<number | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const empty = INTRODUCTION.blocks.length === 0;
@@ -97,6 +70,7 @@ export default function Introduction() {
 
   return (
     <main className="screen screen--read">
+      {!empty && <ReadingProgress />}
       <header className="screen__head screen__head--row">
         <div>
           <h1>{INTRODUCTION.title}</h1>
@@ -125,7 +99,7 @@ export default function Introduction() {
       ) : (
         <article className="intro">
           {INTRODUCTION.blocks.map((b, i) => (
-            <Block key={i} block={b} onNote={setNoteId} />
+            <Block key={i} block={b} onNote={setNoteId} from={from} />
           ))}
         </article>
       )}
@@ -143,7 +117,7 @@ export default function Introduction() {
         >
           <article className="note" key={note.id}>
             <p>
-              <NoteText text={note.text} />
+              <RefText text={note.text} from={from} onGo={() => setNoteId(null)} />
             </p>
           </article>
           <nav className="note-nav" aria-label={t("note.nav")}>

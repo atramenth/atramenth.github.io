@@ -1,9 +1,8 @@
-import { Fragment } from "react";
-import { InlineParser } from "../domain/InlineParser.ts";
 import type { Footnote, Surah } from "../domain/Surah.ts";
+import { InlineParser } from "../domain/InlineParser.ts";
 import { useT } from "../hooks/useT.tsx";
-import { library } from "../services/library.ts";
 import { IconBack, IconNext } from "./Icons.tsx";
+import { RefText } from "./Refs.tsx";
 import { Sheet } from "./Sheet.tsx";
 
 interface Props {
@@ -11,20 +10,21 @@ interface Props {
   /** Language of the sūrah text, for assistive tech. */
   contentLang: string;
   noteId: number;
+  /** Names this place for the "Back to ..." pill when a reference inside the note is followed. */
+  from: string;
   onSelect: (id: number) => void;
   onClose: () => void;
 }
 
-function RichText({ text }: { text: string }) {
+function RichText({ text, from, onGo }: { text: string; from: string; onGo: () => void }) {
   return (
     <>
       {InlineParser.parse(text).map((tok, i) => {
+        if (tok.kind === "break") return <br key={i} />;
         if (tok.kind !== "text") return null;
         return (
           <span key={i} className={tok.editorial ? "ed" : undefined}>
-            {InlineParser.splitReferences(tok.value).map((part, j) =>
-              "ref" in part ? <RefChip key={j} ref_={part.ref} surah={part.surah} /> : <Fragment key={j}>{part.text}</Fragment>,
-            )}
+            <RefText text={tok.value} from={from} onGo={onGo} />
           </span>
         );
       })}
@@ -32,34 +32,22 @@ function RichText({ text }: { text: string }) {
   );
 }
 
-function RefChip({ ref_, surah }: { ref_: string; surah: number }) {
-  const { t } = useT();
-  const ready = library.isAvailable(surah);
-  const name = library.get(surah)?.name;
-  return (
-    <span
-      className={`ref${ready ? "" : " is-soon"}`}
-      title={ready ? (name ? t("note.refTitleNamed", { n: surah, name }) : t("note.refTitle", { n: surah })) : t("note.refSoon", { n: surah, name: name ?? "" })}
-    >
-      {ref_}
-    </span>
-  );
-}
-
-function NoteBody({ note }: { note: Footnote }) {
+function NoteBody({ note, from, onGo }: { note: Footnote; from: string; onGo: () => void }) {
   return (
     <>
       {note.blocks.map((b, i) =>
         b.kind === "p" ? (
           <p key={i}>
-            <RichText text={b.text} />
+            <RichText text={b.text} from={from} onGo={onGo} />
           </p>
         ) : (
           <section key={i} className="def">
             <h3 className="def__term">{b.term}</h3>
             <ol>
               {b.senses.map((s, j) => (
-                <li key={j}>{s}</li>
+                <li key={j}>
+                  <RefText text={s} from={from} onGo={onGo} />
+                </li>
               ))}
             </ol>
           </section>
@@ -69,7 +57,7 @@ function NoteBody({ note }: { note: Footnote }) {
   );
 }
 
-export function NoteSheet({ surah, contentLang, noteId, onSelect, onClose }: Props) {
+export function NoteSheet({ surah, contentLang, noteId, from, onSelect, onClose }: Props) {
   const { t } = useT();
   const notes = surah.orderedFootnotes;
   const index = notes.findIndex((n) => n.id === noteId);
@@ -83,14 +71,15 @@ export function NoteSheet({ surah, contentLang, noteId, onSelect, onClose }: Pro
       label={t("note.label", { n: note.id })}
       onClose={onClose}
       header={
-        <>
-          <span className="sheet__kicker">{t("note.kicker")}</span> {note.id}
-          <span className="sheet__of"> {t("note.of", { n: notes.length })}</span>
-        </>
+        <span className="sheet__count">
+          <span className="sheet__kicker">{t("note.kicker")}</span>
+          <b>{note.id}</b>
+          <span className="sheet__of">{t("note.of", { n: notes.length })}</span>
+        </span>
       }
     >
       <article className="note" key={note.id} lang={contentLang}>
-        <NoteBody note={note} />
+        <NoteBody note={note} from={from} onGo={onClose} />
       </article>
       <nav className="note-nav" aria-label={t("note.nav")}>
         <button type="button" className="btn btn--quiet" disabled={!prev} onClick={() => prev && onSelect(prev.id)}>
