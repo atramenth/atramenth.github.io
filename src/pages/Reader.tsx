@@ -168,7 +168,7 @@ export default function Reader() {
     el.scrollTo({ left: to * el.clientWidth, behavior: smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "instant" });
   }, []);
 
-  // Open at the requested place: a page number (#/surah/2/5) or a verse (#/surah/10/v92) from a reference.
+  // Open at the requested place: a page number (/surah/2/5) or a verse (/surah/10/v92) from a reference.
   // A language change reloads the text but keeps the reader where they are.
   useEffect(() => {
     if (!surah) return;
@@ -218,7 +218,7 @@ export default function Reader() {
     setCurrent(i);
     progress.save(n, Math.min(i, surah.pages.length - 1), surah.pages.length);
     if (i >= surah.pages.length && !surah.partial) progress.finish(n);
-    history.replaceState(history.state, "", `#/surah/${n}/${i + 1}`);
+    history.replaceState(history.state, "", `/surah/${n}/${i + 1}`);
   }, [n, surah]);
 
   useEffect(() => {

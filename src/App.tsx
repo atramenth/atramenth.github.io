@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from "react";
-import { HashRouter, Link, Outlet, Route, Routes, useLocation, useNavigationType, useParams } from "react-router-dom";
+import { BrowserRouter, Link, Outlet, Route, Routes, useLocation, useNavigationType, useParams } from "react-router-dom";
 import { Toaster } from "./components/Toaster.tsx";
 import { useT } from "./hooks/useT.tsx";
 import { TabBar } from "./components/TabBar.tsx";
@@ -73,7 +73,7 @@ function ReaderRoute() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route element={<Shell />}>
@@ -87,6 +87,6 @@ export default function App() {
           </Route>
         </Routes>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
