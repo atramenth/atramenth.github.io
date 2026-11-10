@@ -347,7 +347,7 @@ export default function Reader() {
   const back = () => ((history.state?.idx ?? 0) > 0 ? navigate(-1) : navigate("/surahs", { replace: true }));
 
   return (
-    <div className={`reader${chrome ? "" : " is-immersive"}`}>
+    <div className={`reader${chrome ? "" : " is-immersive"}${from ? " has-return" : ""}`}>
       <div className="reader__progress" aria-hidden="true">
         <i style={{ transform: `scaleX(${fraction})` }} />
       </div>

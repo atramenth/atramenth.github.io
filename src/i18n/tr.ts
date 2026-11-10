@@ -29,7 +29,9 @@ export const tr: Record<MessageKey, string> = {
   "app.goHome": "Ana sayfaya dön",
 
   "home.translatedBy": "Çeviren",
-  "home.creditAria": "Çeviren: {name}. Çevirmen hakkında okuyun.",
+    "home.scans": "Orijinal taranmış sayfaları gör",
+  "home.scansAria": "Orijinal taranmış sayfaları Folia'da gör, yeni sekmede açılır",
+"home.creditAria": "Çeviren: {name}. Çevirmen hakkında okuyun.",
   "home.line": "İngilizce Kur’ân, yakından okunur.",
   "home.parts": "30 cüz",
   "home.continue": "Devam et · {name}",
