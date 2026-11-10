@@ -51,6 +51,13 @@ export default function Home() {
           </Link>
         </div>
 
+        <a className="home__scans" href="https://atramenth.github.io/folia/" target="_blank" rel="noopener" aria-label={t("home.scansAria")}>
+          {t("home.scans")}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8" />
+          </svg>
+        </a>
+
         <div className="home__legend" aria-hidden="true">
           <span>
             <i className="key key--makkah" /> {t("place.Makkah")} {library.count("Makkah")}

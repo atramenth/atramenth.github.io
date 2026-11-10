@@ -27,7 +27,9 @@ export const en = {
   "app.goHome": "Go home",
 
   "home.translatedBy": "Translated by",
-  "home.creditAria": "Translated by {name}. Read about the translator.",
+    "home.scans": "See the original scanned pages",
+  "home.scansAria": "See the original scanned pages in Folia, opens in a new tab",
+"home.creditAria": "Translated by {name}. Read about the translator.",
   "home.line": "The Qur’ān in English, read closely.",
   "home.parts": "30 parts",
   "home.continue": "Continue · {name}",
