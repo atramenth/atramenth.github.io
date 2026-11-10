@@ -344,7 +344,7 @@ a.index__row:hover { background: var(--surface); }
 .reader__progress i { display: block; height: 100%; background: var(--lantern); transform-origin: left; transition: transform 0.4s var(--ease-out); }
 
 .reader__bar, .dock { position: absolute; z-index: 6; left: 0; right: 0; background: var(--paper); transition: transform 0.38s var(--ease-liturgy), opacity 0.25s; }
-.reader__bar { top: 0; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; grid-auto-rows: auto; align-items: center; gap: 0.25rem; padding: calc(0.9rem + env(safe-area-inset-top)) 0.5rem 0.3rem; border-bottom: 1px solid var(--border); }
+.reader__bar { top: 0; display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; grid-auto-rows: auto; align-items: center; gap: 0.25rem; padding: calc(1.6rem + env(safe-area-inset-top)) 0.5rem 0.3rem; border-bottom: 1px solid var(--border); }
 .dock { bottom: 0; display: grid; gap: 0.3rem; padding: 0.45rem 0.6rem calc(0.45rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
 .is-immersive .reader__bar { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .is-immersive .dock { transform: translateY(100%); opacity: 0; pointer-events: none; }
@@ -355,16 +355,16 @@ a.index__row:hover { background: var(--surface); }
 .reader__title span { font-size: 0.72rem; color: var(--text-3); }
 .reader__tools { display: flex; }
 
-.reader__ghost { position: absolute; z-index: 3; top: calc(1rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 1.4rem; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); opacity: 0.7; pointer-events: none; font-variant-numeric: tabular-nums; }
+.reader__ghost { position: absolute; z-index: 3; top: calc(1.7rem + env(safe-area-inset-top)); left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 1.4rem; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); opacity: 0.7; pointer-events: none; font-variant-numeric: tabular-nums; }
 
 .returnpill { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 0.3rem; min-height: 2.2rem; margin: 0.1rem -0.5rem -0.3rem; padding: 0 1rem; border-top: 1px solid var(--lantern); background: var(--lantern-dim); color: var(--text); font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.has-return .page { padding-top: calc(7.6rem + env(safe-area-inset-top)); }
-.has-return.is-immersive .page { padding-top: calc(5rem + env(safe-area-inset-top)); }
+.has-return .page { padding-top: calc(8.3rem + env(safe-area-inset-top)); }
+.has-return.is-immersive .page { padding-top: calc(5.7rem + env(safe-area-inset-top)); }
 .returnpill svg { width: 1.1rem; height: 1.1rem; color: var(--lantern); flex: none; }
 
 .reader__track { flex: 1; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; outline: 0; }
 .reader__track::-webkit-scrollbar { display: none; }
-.page { flex: 0 0 100%; min-width: 0; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow-y: auto; overscroll-behavior-y: contain; padding: calc(5rem + env(safe-area-inset-top)) 1.4rem calc(7.5rem + env(safe-area-inset-bottom)); }
+.page { flex: 0 0 100%; min-width: 0; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow-y: auto; overscroll-behavior-y: contain; padding: calc(5.7rem + env(safe-area-inset-top)) 1.4rem calc(7.5rem + env(safe-area-inset-bottom)); }
 .paper { container: paper / inline-size; max-width: 36rem; margin: 0 auto; min-height: 100%; font-size: calc(1.5rem * var(--read-scale)); }
 
 .heading { text-align: center; margin: 0.5rem 0 2.2rem; display: grid; justify-items: center; }
@@ -547,7 +547,7 @@ a.index__row:hover { background: var(--surface); }
 .letter figcaption { margin-top: 1rem; color: var(--text-3); font-size: 0.85rem; line-height: 1.5; }
 
 @media (min-width: 720px) {
-  .page { padding-top: calc(5rem + env(safe-area-inset-top)); }
+  .page { padding-top: calc(5.7rem + env(safe-area-inset-top)); }
   .sheet { border-radius: 26px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-strong); }
   .screen { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
